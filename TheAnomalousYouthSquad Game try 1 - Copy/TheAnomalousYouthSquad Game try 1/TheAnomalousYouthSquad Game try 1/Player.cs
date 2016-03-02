@@ -5,8 +5,8 @@ using System.Text;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
-    // Cheerleader player class
-    class Cheerleader : Player
+    // Class to set values for the playable characters only. Inherits from the character class. 
+    class Player:Character
     {
     }
 }
