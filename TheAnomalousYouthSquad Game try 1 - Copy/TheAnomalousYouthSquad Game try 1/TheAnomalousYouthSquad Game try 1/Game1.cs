@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Audio;
 namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Staes for the game
-    enum GameStates { Intro, TitleScreen, Options, Credits}
+    enum GameStates { Intro, TitleScreen, Options, Credits, Game}
 
 
     /// <summary>
@@ -50,6 +50,36 @@ namespace TheAnomalousYouthSquad_Game_try_1
         int BlueCollisionOffSet = 10;
         int GreenCollisionOffSet = 10;
         int PurpleCollisionOffSet = 10;
+
+        // Menu buttons for title screen
+        Texture2D StartButton;
+        Texture2D OptionsButton;
+        Texture2D CreditsButtons;
+        Vector2 startBPosition;
+        Vector2 creditsBPosition;
+        Vector2 optionsBPosition;
+
+        // Logo for Intro screen
+        Texture2D Logo;
+        Vector2 LogoPosition;
+
+        // GameTitle for title screen
+        Texture2D Title;
+        Vector2 TitlePosition;
+
+        // MouseState for TitleScreen
+        MouseState mState;
+        MouseState LastmState;
+
+
+        // Values for mouse
+        Point MousePosition;
+
+        // Rectangles for title screen buttons
+        Rectangle startArea;
+        Rectangle optionsArea;
+        Rectangle creditsArea;
+
 
         // Collision Methos
         protected bool Collide()
@@ -103,6 +133,15 @@ namespace TheAnomalousYouthSquad_Game_try_1
             GreenPosition = new Vector2(1420, 395);
             PurplePosition = new Vector2(710, 0);
             WhitePosition = new Vector2(710, 395);
+            startBPosition = new Vector2(630, 325);
+            creditsBPosition = new Vector2(630, 465);
+            optionsBPosition = new Vector2(630, 635);
+            TitlePosition = new Vector2(95, 110);
+            LogoPosition = new Vector2(586, 535);
+            MousePosition = new Point(mState.X, mState.Y);
+            startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
+            optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
+            creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
 
             base.Initialize();
 
@@ -135,6 +174,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // Load in TitleMusic
             TitleScreenMusic = Content.Load<SoundEffect>("GameTitle Music");
+
+            // Load in buttons
+            StartButton = Content.Load<Texture2D>("StartButton");
+            CreditsButtons = Content.Load<Texture2D>("CreditsButton");
+            OptionsButton = Content.Load<Texture2D>("OptionsButton");
+
+            // Title for game 
+            Title = Content.Load<Texture2D>("GameTitle");
+
+            // Logo for intro
+            Logo = Content.Load<Texture2D>("GameLogo");
         }
 
         /// <summary>
@@ -173,14 +223,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     // Collide If statement for intro
                     if (Collide())
                     {
-                        System.Threading.Thread.Sleep(5000);
+                        System.Threading.Thread.Sleep(2500);
                         gState = GameStates.TitleScreen;
                     }
                     break;
 
                 case GameStates.TitleScreen:
                     UpdateTitleScreen(gameTime);
-                    this.IsMouseVisible = false;
+                    this.IsMouseVisible = true;
                     break;
 
                 case GameStates.Options:
@@ -190,6 +240,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 case GameStates.Credits:
                     UpdateCredits(gameTime);
+                    this.IsMouseVisible = true;
+                    break;
+                case GameStates.Game:
+                    UpdateGame(gameTime);
                     this.IsMouseVisible = true;
                     break;
             }
@@ -226,6 +280,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 case GameStates.Credits:
                     DrawCredits(gameTime);
                     break;
+                case GameStates.Game:
+                    DrawGame(gameTime);
+                    break;
             }
 
         }
@@ -238,7 +295,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateTitleScreen(GameTime gameTime)
         {
-           
+            TitleScreenInput();
         }
 
         protected void UpdateOptions(GameTime gameTime)
@@ -247,6 +304,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
         }
 
         protected void UpdateCredits(GameTime gameTime)
+        {
+
+        }
+
+        protected void UpdateGame(GameTime gameTime)
         {
 
         }
@@ -260,9 +322,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(bCircle, BluePosition, Color.White);
             spriteBatch.Draw(gCircle, GreenPosition, Color.White);
             spriteBatch.Draw(pCircle, PurplePosition, Color.White);
-            // I statement to draw white circle to the screen
             spriteBatch.Draw(wCircle, WhitePosition, Color.White);
-            
+
+            spriteBatch.Draw(Logo, new Rectangle((int)LogoPosition.X, (int)LogoPosition.Y, 350, 300), Color.White);
+
             spriteBatch.End();
         }
 
@@ -271,20 +334,55 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             // Draws Background to the screen
             spriteBatch.Draw(GameBackground, new Rectangle(0,0, GraphicsDevice.Viewport.Width,GraphicsDevice.Viewport.Height), Color.White);
+
+            spriteBatch.Draw(Title, TitlePosition, Color.White);
+            spriteBatch.Draw(StartButton, startBPosition, Color.White);
+            spriteBatch.Draw(CreditsButtons, creditsBPosition, Color.White);
+            spriteBatch.Draw(OptionsButton, optionsBPosition, Color.White);
+
             spriteBatch.End();
         }
 
         protected void DrawOptions(GameTime gameTime)
         {
             spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Green);
             spriteBatch.End();
         }
 
         protected void DrawCredits(GameTime gameTime)
         {
             spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Pink);
             spriteBatch.End();
         }
 
+        protected void DrawGame(GameTime gameTime)
+        {
+            spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Blue);
+            spriteBatch.End();
+        }
+
+        protected void TitleScreenInput()
+        {
+            LastmState = mState;
+            mState = Mouse.GetState();
+            // If statement for start button click
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 325 && mState.Y < 410 && mState.LeftButton == ButtonState.Pressed)
+            {
+                gState = GameStates.Game;
+            }
+            // If statement for credits button click
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 470 && mState.Y < 565 && mState.LeftButton == ButtonState.Pressed)
+            {
+                gState = GameStates.Credits;
+            }
+            // if statement for options button click
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 635 && mState.Y < 720 && mState.LeftButton == ButtonState.Pressed)
+            {
+                gState = GameStates.Options;
+            }
+        }
     }
 }
