@@ -6,7 +6,7 @@ using System.Text;
 namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Geek/Nerd player class
-    class Geek : Player
+    class Geek : Character
     {
     }
 }

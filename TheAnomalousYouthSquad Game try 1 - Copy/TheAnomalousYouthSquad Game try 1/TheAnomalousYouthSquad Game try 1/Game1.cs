@@ -26,6 +26,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D gCircle;
         Texture2D pCircle;
         Texture2D wCircle;
+        Texture2D atkButton;
+        Texture2D switchButton;
         Vector2 BluePosition;
         Vector2 GreenPosition;
         Vector2 PurplePosition;
@@ -34,8 +36,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Font Properties
         SpriteFont font;
 
-        // Background Picture
+        // Background Pictures
         Texture2D GameBackground;
+        Texture2D gameStateBG;
         
 
         // Sound Effects for game
@@ -171,6 +174,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // Load in BackGround
             GameBackground = Content.Load<Texture2D>("Background for GDAPS Game");
+            gameStateBG = Content.Load<Texture2D>("SchoolBG");
 
             // Load in TitleMusic
             TitleScreenMusic = Content.Load<SoundEffect>("GameTitle Music");
@@ -179,6 +183,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             StartButton = Content.Load<Texture2D>("StartButton");
             CreditsButtons = Content.Load<Texture2D>("CreditsButton");
             OptionsButton = Content.Load<Texture2D>("OptionsButton");
+            atkButton = Content.Load<Texture2D>("SCAttack");
+            switchButton = Content.Load<Texture2D>("SCSwitchSelec");
 
             // Title for game 
             Title = Content.Load<Texture2D>("GameTitle");
@@ -360,7 +366,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
         protected void DrawGame(GameTime gameTime)
         {
             spriteBatch.Begin();
-            GraphicsDevice.Clear(Color.Blue);
+
+            spriteBatch.Draw(gameStateBG, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+
+            spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width , GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
+            spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.End();
         }
 
