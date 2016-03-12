@@ -118,6 +118,27 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="Content\SchoolBG.xnb">
+=======
+    <Content Include="Content\Game State background.xnb">
+>>>>>>> c0bb11a195e3398427bc497014ff60f3fed5a3af
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+<<<<<<< HEAD
+    <Content Include="Content\SCAttack.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\SCSwitchSelec.xnb">
+=======
+    <Content Include="Content\Return button.xnb">
+>>>>>>> c0bb11a195e3398427bc497014ff60f3fed5a3af
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <!-- Specify the search path explicitly so the ResolveAssemblyReferences task picks the right ones -->
   <Target Name="BeforeResolveReferences">
     <CreateProperty Value="$(MSBuildProgramFiles32)\MonoGame\v3.0\Assemblies\Windows;$(AssemblySearchPaths)">

@@ -8,7 +8,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Staes for the game
     enum GameStates { Intro, TitleScreen, Options, Credits, Game}
-
+    // External tool = Windows form app that reads in files for the number of enemies and their stats for each level and sets them to enemy objects. It then stores them into a list for the level.
 
     /// <summary>
     /// This is the main type for your game.
@@ -26,6 +26,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D gCircle;
         Texture2D pCircle;
         Texture2D wCircle;
+        Texture2D atkButton;
+        Texture2D switchButton;
         Vector2 BluePosition;
         Vector2 GreenPosition;
         Vector2 PurplePosition;
@@ -34,8 +36,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Font Properties
         SpriteFont font;
 
-        // Background Picture
+        // Background Pictures
         Texture2D GameBackground;
+        Texture2D gameStateBG;
         
 
         // Sound Effects for game
@@ -80,9 +83,15 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Rectangle optionsArea;
         Rectangle creditsArea;
 
+        // Gamestate Background
+        Texture2D gStateBackground;
+
+        // Return Button for options and credit states
+        Texture2D returnButton;
+        Vector2 returnBPosition;
 
         // Collision Methos
-        protected bool Collide()
+        protected bool CollideTitleScreen()
         {
             // Drawing a rectangle around Blue Circle
             Rectangle BlueRect = new Rectangle(
@@ -133,15 +142,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
             GreenPosition = new Vector2(1420, 395);
             PurplePosition = new Vector2(710, 0);
             WhitePosition = new Vector2(710, 395);
-            startBPosition = new Vector2(630, 325);
-            creditsBPosition = new Vector2(630, 465);
-            optionsBPosition = new Vector2(630, 635);
+            startBPosition = new Vector2(630, 285);
+            creditsBPosition = new Vector2(630, 425);
+            optionsBPosition = new Vector2(630, 595);
             TitlePosition = new Vector2(95, 110);
             LogoPosition = new Vector2(586, 535);
             MousePosition = new Point(mState.X, mState.Y);
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
+
+            returnBPosition = new Vector2(470, 540);
 
             base.Initialize();
 
@@ -171,6 +182,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // Load in BackGround
             GameBackground = Content.Load<Texture2D>("Background for GDAPS Game");
+            gameStateBG = Content.Load<Texture2D>("SchoolBG");
 
             // Load in TitleMusic
             TitleScreenMusic = Content.Load<SoundEffect>("GameTitle Music");
@@ -179,12 +191,21 @@ namespace TheAnomalousYouthSquad_Game_try_1
             StartButton = Content.Load<Texture2D>("StartButton");
             CreditsButtons = Content.Load<Texture2D>("CreditsButton");
             OptionsButton = Content.Load<Texture2D>("OptionsButton");
+            atkButton = Content.Load<Texture2D>("SCAttack");
+            switchButton = Content.Load<Texture2D>("SCSwitchSelec");
 
             // Title for game 
             Title = Content.Load<Texture2D>("GameTitle");
 
             // Logo for intro
             Logo = Content.Load<Texture2D>("GameLogo");
+
+            // Load in gStateBackground
+            gStateBackground = Content.Load<Texture2D>("Game State background");
+
+            // Load in Return button
+            returnButton = Content.Load<Texture2D>("Return Button");
+
         }
 
         /// <summary>
@@ -221,7 +242,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     PurplePosition.Y += .95f;
                     this.IsMouseVisible = false;
                     // Collide If statement for intro
-                    if (Collide())
+                    if (CollideTitleScreen())
                     {
                         System.Threading.Thread.Sleep(2500);
                         gState = GameStates.TitleScreen;
@@ -300,17 +321,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateOptions(GameTime gameTime)
         {
-
+            ReturnButtonInput();
         }
 
         protected void UpdateCredits(GameTime gameTime)
         {
-
+            ReturnButtonInput();
         }
 
         protected void UpdateGame(GameTime gameTime)
         {
-
+            LastmState = mState;
+            mState = Mouse.GetState();
         }
 
         // Draw Methods for each state
@@ -347,6 +369,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Green);
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
             spriteBatch.End();
         }
 
@@ -354,13 +377,28 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Pink);
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+            spriteBatch.DrawString(font, "This is a game that was made over the course of our Spring semester at Rochester institute of technology", new Vector2(GraphicsDevice.Viewport.Width / 2, 20), Color.Black);
+            spriteBatch.DrawString(font, "Roles for the game include", new Vector2(GraphicsDevice.Viewport.Width / 2, 50), Color.Black);
+            spriteBatch.DrawString(font, "Project Lead: Herman McElveen", new Vector2(GraphicsDevice.Viewport.Width / 2, 70), Color.Black);
+            spriteBatch.DrawString(font, "Project Design: Tung Nyugen", new Vector2(GraphicsDevice.Viewport.Width / 2, 90), Color.Black);
+            spriteBatch.DrawString(font, "Project Architecture: Ryan Lowrie", new Vector2(GraphicsDevice.Viewport.Width / 2, 110), Color.Black);
+            spriteBatch.DrawString(font, "Project User Interface: Yoon Kim", new Vector2(GraphicsDevice.Viewport.Width / 2, 130), Color.Black);
             spriteBatch.End();
         }
 
         protected void DrawGame(GameTime gameTime)
         {
             spriteBatch.Begin();
-            GraphicsDevice.Clear(Color.Blue);
+<<<<<<< HEAD
+
+            spriteBatch.Draw(gameStateBG, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+
+            spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width , GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
+            spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
+=======
+            spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+>>>>>>> c0bb11a195e3398427bc497014ff60f3fed5a3af
             spriteBatch.End();
         }
 
@@ -369,20 +407,32 @@ namespace TheAnomalousYouthSquad_Game_try_1
             LastmState = mState;
             mState = Mouse.GetState();
             // If statement for start button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 325 && mState.Y < 410 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Game;
             }
             // If statement for credits button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 470 && mState.Y < 565 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Credits;
             }
             // if statement for options button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 635 && mState.Y < 720 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Options;
             }
         }
+        // Method for the return button
+        protected void ReturnButtonInput()
+        {
+            LastmState = mState;
+            mState = Mouse.GetState();
+
+            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Pressed)
+            {
+                gState = GameStates.TitleScreen;
+            }
+        }
+
     }
 }
