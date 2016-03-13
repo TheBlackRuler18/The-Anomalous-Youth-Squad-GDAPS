@@ -90,7 +90,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D atkButton;
         Texture2D switchButton;
 
+        // Make the character variables to test combat
+        Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
+        Geek nerd = new Geek(200, 20, 20, 20, true);
+        Jock football = new Jock(150, 20, 15, 15, true);
 
+        // Make a enemy for test
+        Enemy bad = new Enemy(120, 10, 10, 10, true);
 
         // Collision Methos
         protected bool Collide()
@@ -336,6 +342,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateGame(GameTime gameTime)
         {
+            Combat();
 
         }
 
@@ -377,7 +384,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Green);
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
-            spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
+
+            // Game intrutions for the player to see
+            spriteBatch.DrawString(font, "Hello player, the game you are playing is a turn based action RPG set in the real world(but with a couple of changes)", new Vector2(GraphicsDevice.Viewport.Width / 4, 20), Color.Black);
+            spriteBatch.DrawString(font, "The game is a point and click style type of game so thwe only thing that you are goping to need is a mouse and you wits!!!", new Vector2(GraphicsDevice.Viewport.Width / 4, 40), Color.Black);
+            spriteBatch.DrawString(font, "As the player you will control three different types of characters that are all different and have unique stats.", new Vector2(GraphicsDevice.Viewport.Width / 4, 60), Color.Black);
+            spriteBatch.DrawString(font, "Your mission is to defeat all the enemies that you find and defeat the boss to win the game and save the world", new Vector2(GraphicsDevice.Viewport.Width / 4, 80), Color.Black);
             spriteBatch.End();
         }
 
@@ -386,6 +398,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Pink);
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+
+            // Writing the credits to the screen
+            spriteBatch.DrawString(font, "This is a game was made over the course of our spring semester at Rochester Institute of Technology" , new Vector2(GraphicsDevice.Viewport.Width/3, 20), Color.Black);
+            spriteBatch.DrawString(font, "The roles for the project include:" , new Vector2(GraphicsDevice.Viewport.Width / 3, 40), Color.Black);
+            spriteBatch.DrawString(font, "Project Lead: Herman McElveen", new Vector2(GraphicsDevice.Viewport.Width / 3, 60), Color.Black);
+            spriteBatch.DrawString(font, "Project Architect: Ryan Lowrie", new Vector2(GraphicsDevice.Viewport.Width / 3, 80), Color.Black);
+            spriteBatch.DrawString(font, "Project Design: Tung Nguyen", new Vector2(GraphicsDevice.Viewport.Width / 3, 100), Color.Black);
+            spriteBatch.DrawString(font, "Project Interface: Yoon Kim", new Vector2(GraphicsDevice.Viewport.Width / 3, 120), Color.Black);
             spriteBatch.End();
         }
 
@@ -393,12 +413,19 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             spriteBatch.Begin();
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-            spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
 
             // try code
             spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
 
+            // Putting in return button to test attack
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+
+            // Circle for the test attack
+            spriteBatch.Draw(bCircle, new Vector2(50, 400), Color.White);
+            spriteBatch.Draw(gCircle, new Vector2(GraphicsDevice.Viewport.Width - 100, 400), Color.White);
+            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(50, 510), Color.Black);
+            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width -140, 510), Color.Black);
 
             spriteBatch.End();
         }
@@ -434,5 +461,21 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 gState = GameStates.TitleScreen;
             }
         }
+
+        // Method to test attack
+        protected void Combat()
+        {
+            LastmState = mState;
+            mState = Mouse.GetState();
+
+            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 700 && mState.Y < 845 && mState.LeftButton == ButtonState.Pressed)
+            {
+                int attack = nerd.Attack();
+                bad.ChangeHealth(attack);
+            }
+
+                
+        }
+
     }
 }
