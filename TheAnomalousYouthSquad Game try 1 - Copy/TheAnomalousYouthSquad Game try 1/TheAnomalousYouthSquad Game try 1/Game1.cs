@@ -8,7 +8,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Staes for the game
     enum GameStates { Intro, TitleScreen, Options, Credits, Game}
-
+    // External tool = Windows form app that reads in files for the number of enemies and their stats for each level and sets them to enemy objects. It then stores them into a list for the level.
 
     /// <summary>
     /// This is the main type for your game.
@@ -88,7 +88,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 returnBPosition;
 
         // Collision Methos
-        protected bool Collide()
+        protected bool CollideTitleScreen()
         {
             // Drawing a rectangle around Blue Circle
             Rectangle BlueRect = new Rectangle(
@@ -236,7 +236,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     PurplePosition.Y += .95f;
                     this.IsMouseVisible = false;
                     // Collide If statement for intro
-                    if (Collide())
+                    if (CollideTitleScreen())
                     {
                         System.Threading.Thread.Sleep(2500);
                         gState = GameStates.TitleScreen;
