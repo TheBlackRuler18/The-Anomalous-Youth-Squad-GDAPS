@@ -372,6 +372,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Pink);
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+            spriteBatch.DrawString(font, "This is a game that was made over the course of our Spring semester at Rochester institute of technology", new Vector2(GraphicsDevice.Viewport.Width / 2, 20), Color.Black);
+            spriteBatch.DrawString(font, "Roles for the game include", new Vector2(GraphicsDevice.Viewport.Width / 2, 50), Color.Black);
+            spriteBatch.DrawString(font, "Project Lead: Herman McElveen", new Vector2(GraphicsDevice.Viewport.Width / 2, 70), Color.Black);
+            spriteBatch.DrawString(font, "Project Design: Tung Nyugen", new Vector2(GraphicsDevice.Viewport.Width / 2, 90), Color.Black);
+            spriteBatch.DrawString(font, "Project Architecture: Ryan Lowrie", new Vector2(GraphicsDevice.Viewport.Width / 2, 110), Color.Black);
+            spriteBatch.DrawString(font, "Project User Interface: Yoon Kim", new Vector2(GraphicsDevice.Viewport.Width / 2, 130), Color.Black);
             spriteBatch.End();
         }
 
