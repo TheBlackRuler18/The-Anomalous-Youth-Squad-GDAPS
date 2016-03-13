@@ -450,6 +450,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 gState = GameStates.Options; 
             }
         }
+        protected void GameScreenInput()
+        {
+            LastmState = mState;
+            mState = Mouse.GetState();
+            // If statement for start button click
+            if (mState.X >= atkButton.Bounds.X && mState.X <= atkButton.Bounds.X + atkButton.Bounds.Width && mState.Y >= atkButton.Bounds.Y && mState.Y <= atkButton.Bounds.Y + atkButton.Bounds.Height && mState.LeftButton == ButtonState.Pressed)
+            {
+                spriteBatch.Begin();
+                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width/2, GraphicsDevice.Viewport.Height/2), Color.Black);
+                spriteBatch.End();
+            }
+            // If statement for credits button click
+            /*if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
+            {
+            }
+            // if statement for options button click
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
+            {
+            }*/
+        }
 
         protected void ReturnButtonInput()
         {
