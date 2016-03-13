@@ -5,18 +5,17 @@ using System.Text;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
-    // Class for enemy characters
-    class Enemy : Character
+    class Jock : Character
     {
-        private int eHealth;
-        private int eAttack;
-        private int eDefense;
-        private int eSpeed;
+        private int jHealth;
+        private int jAttack;
+        private int jDefense;
+        private int jSpeed;
         private bool isAlive;
 
-        public Enemy(int h, int s, int a, int d, bool i) : base(h, s, a, d, i) { }
+        public Jock(int h, int s, int a, int d, bool i) : base(h, s, a, d, i) { }
 
-        // check if enemy is dead
+        // called if player is dead
         public override void playerDead()
         {
             if (isAlive == true) isAlive = false;

@@ -5,8 +5,7 @@ using System.Text;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
-    // Head abstract class for all characters in the game, player and enemy. Player class inherits from this as aswell as the enemy class.
-    abstract class Character
+  abstract  class Character
     {
         // Ryan Lowrie
         // Attributes
@@ -15,7 +14,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         int defense;
         int attack;
         bool isAlive;
-        
+
         // Methods that must be inherited
         public Character(int h, int s, int a, int d, bool i)
         {

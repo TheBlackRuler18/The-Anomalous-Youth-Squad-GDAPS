@@ -5,10 +5,8 @@ using System.Text;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
-    // Geek/Nerd player class
     class Geek : Character
     {
-        // Attributes for geek playable character
         private int gHealth;
         private int gSpeed;
         private int gDefense;
@@ -16,12 +14,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private bool isAlive;
 
         // Constructor
-        public Geek(int h, int s, int a, int d, bool i) : base(h, s, a, d, i) { } 
+        public Geek(int h, int s, int a, int d, bool i) : base(h, s, a, d, i) { }
 
         // Attack method
         public override void Attack(Enemy target)
         {
-            
+
         }
         // check if player is dead
         public override void playerDead()
