@@ -419,7 +419,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
 
             // Putting in return button to test attack
-            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+            //spriteBatch.Draw(returnButton, returnBPosition, Color.White);
 
             // Circle for the test attack
             spriteBatch.Draw(bCircle, new Vector2(50, 400), Color.White);
