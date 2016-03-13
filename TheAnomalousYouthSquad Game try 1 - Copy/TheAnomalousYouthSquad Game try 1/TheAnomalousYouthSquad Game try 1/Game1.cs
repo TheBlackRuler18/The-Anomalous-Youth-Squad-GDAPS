@@ -80,6 +80,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Rectangle optionsArea;
         Rectangle creditsArea;
 
+        // Gamestate Background
+        Texture2D gStateBackground;
+
+        // Return Button for options and credit states
+        Texture2D returnButton;
+        Vector2 returnBPosition;
 
         // Collision Methos
         protected bool Collide()
@@ -133,15 +139,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
             GreenPosition = new Vector2(1420, 395);
             PurplePosition = new Vector2(710, 0);
             WhitePosition = new Vector2(710, 395);
-            startBPosition = new Vector2(630, 325);
-            creditsBPosition = new Vector2(630, 465);
-            optionsBPosition = new Vector2(630, 635);
+            startBPosition = new Vector2(630, 285);
+            creditsBPosition = new Vector2(630, 425);
+            optionsBPosition = new Vector2(630, 595);
             TitlePosition = new Vector2(95, 110);
             LogoPosition = new Vector2(586, 535);
             MousePosition = new Point(mState.X, mState.Y);
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
+
+            returnBPosition = new Vector2(470, 540);
 
             base.Initialize();
 
@@ -185,6 +193,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // Logo for intro
             Logo = Content.Load<Texture2D>("GameLogo");
+
+            // Load in gStateBackground
+            gStateBackground = Content.Load<Texture2D>("Game State background");
+
+            // Load in Return button
+            returnButton = Content.Load<Texture2D>("Return Button");
+
         }
 
         /// <summary>
@@ -300,17 +315,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateOptions(GameTime gameTime)
         {
-
+            ReturnButtonInput();
         }
 
         protected void UpdateCredits(GameTime gameTime)
         {
-
+            ReturnButtonInput();
         }
 
         protected void UpdateGame(GameTime gameTime)
         {
-
+            LastmState = mState;
+            mState = Mouse.GetState();
         }
 
         // Draw Methods for each state
@@ -347,6 +363,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Green);
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
             spriteBatch.End();
         }
 
@@ -354,13 +371,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             spriteBatch.Begin();
             GraphicsDevice.Clear(Color.Pink);
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
             spriteBatch.End();
         }
 
         protected void DrawGame(GameTime gameTime)
         {
             spriteBatch.Begin();
-            GraphicsDevice.Clear(Color.Blue);
+            spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
             spriteBatch.End();
         }
 
@@ -369,20 +387,32 @@ namespace TheAnomalousYouthSquad_Game_try_1
             LastmState = mState;
             mState = Mouse.GetState();
             // If statement for start button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 325 && mState.Y < 410 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Game;
             }
             // If statement for credits button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 470 && mState.Y < 565 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Credits;
             }
             // if statement for options button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 635 && mState.Y < 720 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Options;
             }
         }
+        // Method for the return button
+        protected void ReturnButtonInput()
+        {
+            LastmState = mState;
+            mState = Mouse.GetState();
+
+            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Pressed)
+            {
+                gState = GameStates.TitleScreen;
+            }
+        }
+
     }
 }
