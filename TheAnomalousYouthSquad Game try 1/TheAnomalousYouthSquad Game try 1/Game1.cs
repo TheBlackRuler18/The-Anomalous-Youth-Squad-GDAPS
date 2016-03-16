@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using System;
+using System.Collections.Generic;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -98,6 +100,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Make a enemy for test
         Enemy bad = new Enemy(120, 10, 10, 10, true);
 
+        // More test stuff
+        List<Enemy> enemies; 
+
+
+
         // Collision Methos
         protected bool Collide()
         {
@@ -161,6 +168,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
 
             returnBPosition = new Vector2(470, 540);
+
+            // Test stuff
+            enemies = new List<Enemy>();
 
             base.Initialize();
 
