@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -27,6 +32,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         public abstract void playerDead(); // Called when any characters health reaches 0, displays animation for inactive character
         public abstract int Attack(/*Enemy en*/); // Main damage dealing method, will edit values and account for missing/blocking
 
-        public abstract void ChangeHealth(int amount);
+        // public abstract void ChangeHealth(int amount);
+        public abstract void Draw(SpriteBatch sbatch);
     }
 }

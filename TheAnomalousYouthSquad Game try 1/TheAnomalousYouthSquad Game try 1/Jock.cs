@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -12,12 +17,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private int jDefense;
         private int jSpeed;
         private bool isAlive;
+        private Rectangle jRect;
 
-        public int JHealth { get { return jHealth; } }
+        public int JHealth { get { return jHealth; } set { jHealth = value; } }
         public int JAttack { get { return jAttack; } }
         public int JDefense { get { return jDefense; } }
         public int JSpeed { get { return jSpeed; } }
-        public bool IsAlive { get { return isAlive; } }
+        public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
 
 
         public Jock(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
@@ -66,7 +72,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
             return jAttack;
         }
 
-        public override void ChangeHealth(int amount)
+        public override void Draw(SpriteBatch sbatch)
+        {
+            
+        }
+
+        /*public override void ChangeHealth(int amount)
         {
             jHealth = jHealth - amount;
 
@@ -74,6 +85,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 jHealth = 0;
             }
-        }
+        }*/
     }
 }

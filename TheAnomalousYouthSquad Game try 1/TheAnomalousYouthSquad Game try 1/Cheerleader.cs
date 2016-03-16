@@ -2,6 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -13,12 +18,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private int cSpeed;
         private int cDefense;
         private bool isAlive;
+        private Rectangle cRect;
 
-        public int CHealth { get { return cHealth; } }
+        public int CHealth { get { return cHealth; } set { cHealth = value; } }
         public int CAttack { get { return cAttack; } }
         public int CDefense { get { return cDefense; } }
         public int CSpeed { get { return cSpeed; } }
-        public bool IsAlive { get { return isAlive; } }
+        public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
 
         // constructor
         public Cheerleader(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
@@ -66,7 +72,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
             return cAttack;
         }
 
-        public override void ChangeHealth(int amount)
+        public override void Draw(SpriteBatch sbatch)
+        {
+            
+        }
+        /* public override void ChangeHealth(int amount)
         {
             cHealth = cHealth - amount;
 
@@ -74,6 +84,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 cHealth = 0;
             }
-        }
+        } */
     }
 }

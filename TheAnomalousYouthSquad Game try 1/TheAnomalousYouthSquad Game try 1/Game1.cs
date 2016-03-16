@@ -156,10 +156,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
             TitlePosition = new Vector2(95, 110);
             LogoPosition = new Vector2(586, 535);
             MousePosition = new Point(mState.X, mState.Y);
-            startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
-            optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
-            creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
-
+            startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70); // Area for start button
+            optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70); // Area for options button
+            creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70); // Area for credits button
             returnBPosition = new Vector2(470, 540);
 
             base.Initialize();
@@ -419,7 +418,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
 
             // Putting in return button to test attack
-            //spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
 
             // Circle for the test attack
             spriteBatch.Draw(bCircle, new Vector2(50, 400), Color.White);
@@ -450,27 +449,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 gState = GameStates.Options; 
             }
         }
-        protected void GameScreenInput()
-        {
-            LastmState = mState;
-            mState = Mouse.GetState();
-            // If statement for start button click
-            if (mState.X >= atkButton.Bounds.X && mState.X <= atkButton.Bounds.X + atkButton.Bounds.Width && mState.Y >= atkButton.Bounds.Y && mState.Y <= atkButton.Bounds.Y + atkButton.Bounds.Height && mState.LeftButton == ButtonState.Pressed)
-            {
-                spriteBatch.Begin();
-                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width/2, GraphicsDevice.Viewport.Height/2), Color.Black);
-                spriteBatch.End();
-            }
-            // If statement for credits button click
-            /*if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
-            {
-            }
-            // if statement for options button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
-            {
-            }*/
-        }
 
+        // Method that handles clicking the return button and changing the state to the title screen 
         protected void ReturnButtonInput()
         {
             LastmState = mState;
@@ -491,7 +471,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
             if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 700 && mState.Y < 845 && mState.LeftButton == ButtonState.Pressed)
             {
                 int attack = nerd.Attack();
-                bad.ChangeHealth(attack);
+
+                if(bad.EHealth <= 0)
+                {
+                    bad.EHealth = 0;
+                    bad.IsAlive = false;
+                }
+                else
+                {
+                    bad.EHealth = bad.EHealth - attack;
+                }
+                // bad.ChangeHealth(attack);
             }
 
                 
