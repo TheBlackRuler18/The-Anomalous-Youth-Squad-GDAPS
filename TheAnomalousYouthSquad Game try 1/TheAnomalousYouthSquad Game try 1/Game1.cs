@@ -172,18 +172,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
             TitlePosition = new Vector2(95, 110);
             LogoPosition = new Vector2(586, 535);
             MousePosition = new Point(mState.X, mState.Y);
-<<<<<<< HEAD
+
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70); // Area for start button
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70); // Area for options button
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70); // Area for credits button
-=======
+
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
             atkButtn = new Rectangle(atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height);
             switchButtn = new Rectangle(switchButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - switchButton.Bounds.Height * 4, switchButton.Bounds.Width, switchButton.Bounds.Height);
 
->>>>>>> 239050403887e3ed988450dd498d690f6c17136b
             returnBPosition = new Vector2(470, 540);
 
             // Test stuff
