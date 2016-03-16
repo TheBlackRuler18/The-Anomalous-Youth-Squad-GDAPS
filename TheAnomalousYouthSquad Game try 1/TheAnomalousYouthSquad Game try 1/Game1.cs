@@ -353,7 +353,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         protected void UpdateGame(GameTime gameTime)
         {
             Combat();
-
+            GameScreenInput();
         }
 
         // Draw Methods for each state
