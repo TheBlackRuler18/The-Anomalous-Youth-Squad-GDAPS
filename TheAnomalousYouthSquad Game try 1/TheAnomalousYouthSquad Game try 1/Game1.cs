@@ -38,7 +38,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         // Background Picture
         Texture2D GameBackground;
-        
+
+        // Turn variable
+        bool turnBool;
 
         // Sound Effects for game
         SoundEffect TitleScreenMusic;
@@ -188,6 +190,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
             // Test stuff
             enemies = new List<Enemy>();
 
+            // turn variable
+            turnBool = true;
+
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
 
@@ -262,6 +267,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // TODO: Add your update logic here
 
+            LastmState = mState;
+            mState = Mouse.GetState();
+
             base.Update(gameTime);
 
             // Update for each state
@@ -274,6 +282,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     GreenPosition.X -= 2;
                     PurplePosition.Y += .95f;
                     this.IsMouseVisible = false;
+
+                 
+
                     // Collide If statement for intro
                     if (Collide())
                     {
@@ -366,7 +377,33 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateGame(GameTime gameTime)
         {
-            Combat();
+            LastmState = mState;
+            mState = Mouse.GetState();
+
+            /*while (bad.EHealth != 0 && nerd.GHealth != 0)
+            {
+                switch(turnBool)
+                {
+                    case true:
+                        playerCombat();
+                        break;
+
+                    case false:
+                        enemyCombat();
+                        break;
+                }
+                
+            }*/
+            if (turnBool == true)
+            {
+                playerCombat();
+
+            }
+            else
+            {
+                enemyCombat();
+            }
+
         }
 
         // Draw Methods for each state
@@ -462,8 +499,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void TitleScreenInput()
         {
-            LastmState = mState;
-            mState = Mouse.GetState();
+
             // If statement for start button click
             if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Pressed)
             {
@@ -484,8 +520,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Method that handles clicking the return button and changing the state to the title screen 
         protected void ReturnButtonInput()
         {
-            LastmState = mState;
-            mState = Mouse.GetState();
+
 
             if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Pressed)
             {
@@ -494,10 +529,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         }
 
         // Method to test attack
-        protected void Combat()
+        protected void playerCombat()
         {
-            LastmState = mState;
-            mState = Mouse.GetState();
+
 
             //Button click for attacking
             if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)
@@ -505,16 +539,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 attacking = true;
                 switching = false;
                 int attack = nerd.Attack();
-
-                if(bad.EHealth <= 0)
+                bad.EHealth = bad.EHealth - attack;
+                if (bad.EHealth <= 0)
                 {
                     bad.EHealth = 0;
                     bad.IsAlive = false;
                 }
-                else
-                {
-                    bad.EHealth = bad.EHealth - attack;
-                }
+                turnBool = false;
                 // bad.ChangeHealth(attack);
             }
 
@@ -525,6 +556,23 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 attacking = false;
             }
         }
+
+        protected void enemyCombat()
+        {
+            if(bad.EHealth <= 0)
+            {
+                int attack = bad.Attack();
+                nerd.GHealth = nerd.GHealth - attack;
+            }
+            if(nerd.GHealth <= 0)
+            {
+                nerd.GHealth = 0;
+                nerd.IsAlive = false;
+            }
+            turnBool = true;
+        }
+
+
 
     }
 }
