@@ -27,19 +27,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
 
         public Jock(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
-        {
-            jHealth = h;
-            jAttack = a;
-            jSpeed = s;
-            jDefense = d;
-            isAlive = true;
-        }
-
-        // called if player is dead
-        public override void playerDead()
-        {
-            if (isAlive == true) isAlive = false;
-        }
+        {}
 
         // attack method
         public override int Attack(/*Enemy target*/)

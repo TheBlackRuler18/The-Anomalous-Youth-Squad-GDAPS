@@ -29,7 +29,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             defense = d;
             isAlive = i;
         }
-        public abstract void playerDead(); // Called when any characters health reaches 0, displays animation for inactive character
+
         public abstract int Attack(/*Enemy en*/); // Main damage dealing method, will edit values and account for missing/blocking
 
         // public abstract void ChangeHealth(int amount);

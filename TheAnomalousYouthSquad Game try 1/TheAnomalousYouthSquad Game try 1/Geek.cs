@@ -27,19 +27,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         // Constructor
         public Geek(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
-        {
-            gHealth = h;
-            gAttack = a;
-            gSpeed = s;
-            gDefense = d;
-            isAlive = true;
-        }
-
-        // check if player is dead
-        public override void playerDead()
-        {
-            if (isAlive == true) isAlive = false;
-        }
+        {}
 
         public override int Attack(/*Enemy target*/)
         {

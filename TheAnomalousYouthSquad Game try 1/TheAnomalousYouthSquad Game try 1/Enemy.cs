@@ -26,19 +26,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
 
         public Enemy(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
-        {
-            eHealth = h;
-            eAttack = a;
-            eSpeed = s;
-            eDefense = d;
-            isAlive = true;
-        }
-
-        // check if enemy is dead
-        public override void playerDead()
-        {
-            if (isAlive == true) isAlive = false;
-        }
+        {}
 
         // attack method
         public override int Attack(/*Enemy target*/)

@@ -399,7 +399,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             else
             {
                 enemyCombat();
-            } */
+            } */ // Commented out for neater switch statement
 
         }
 
