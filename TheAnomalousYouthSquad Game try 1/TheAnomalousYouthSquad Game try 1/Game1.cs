@@ -92,6 +92,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D atkButton;
         Texture2D switchButton;
 
+        // Rectangles for the buttons
+        Rectangle atkButtn;
+        Rectangle switchButtn;
+
+        bool attacking = false;
+        bool switching = false;
+
         // Make the character variables to test combat
         Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
         Geek nerd = new Geek(200, 20, 20, 20, true);
@@ -152,6 +159,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             // TODO: Add your initialization logic here
 
+            base.Initialize();
+
             // Assigning values to the vector2 
             BluePosition = new Vector2(0, 395);
             GreenPosition = new Vector2(1420, 395);
@@ -166,13 +175,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
+            atkButtn = new Rectangle(atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height);
+            switchButtn = new Rectangle(switchButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - switchButton.Bounds.Height * 4, switchButton.Bounds.Width, switchButton.Bounds.Height);
 
             returnBPosition = new Vector2(470, 540);
 
             // Test stuff
             enemies = new List<Enemy>();
-
-            base.Initialize();
 
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
@@ -425,9 +434,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
             // try code
+            if (attacking == true)
+            {
+                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
+            if (switching == true)
+            {
+                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
             spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
-
             // Putting in return button to test attack
             //spriteBatch.Draw(returnButton, returnBPosition, Color.White);
 
@@ -460,26 +476,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 gState = GameStates.Options; 
             }
         }
-        protected void GameScreenInput()
-        {
-            LastmState = mState;
-            mState = Mouse.GetState();
-            // If statement for start button click
-            if (mState.X >= atkButton.Bounds.X && mState.X <= atkButton.Bounds.X + atkButton.Bounds.Width && mState.Y >= atkButton.Bounds.Y && mState.Y <= atkButton.Bounds.Y + atkButton.Bounds.Height && mState.LeftButton == ButtonState.Pressed)
-            {
-                spriteBatch.Begin();
-                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width/2, GraphicsDevice.Viewport.Height/2), Color.Black);
-                spriteBatch.End();
-            }
-            // If statement for credits button click
-            /*if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
-            {
-            }
-            // if statement for options button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
-            {
-            }*/
-        }
 
         protected void ReturnButtonInput()
         {
@@ -498,13 +494,21 @@ namespace TheAnomalousYouthSquad_Game_try_1
             LastmState = mState;
             mState = Mouse.GetState();
 
-            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 700 && mState.Y < 845 && mState.LeftButton == ButtonState.Pressed)
+            //Button click for attacking
+            if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)
             {
+                attacking = true;
+                switching = false;
                 int attack = nerd.Attack();
                 bad.ChangeHealth(attack);
             }
 
-                
+            //Button click for switching character focus
+            if (mState.X >= switchButtn.X && mState.X <= switchButtn.X + switchButtn.Width && mState.Y >= switchButtn.Y && mState.Y < switchButtn.Y + switchButtn.Height && mState.LeftButton == ButtonState.Pressed)
+            {
+                switching = true;
+                attacking = false;
+            }
         }
 
     }
