@@ -26,7 +26,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
 
         public Enemy(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
-        {}
+        {
+            eHealth = h;
+            eSpeed = s;
+            eAttack = a;
+            eDefense = d;
+            isAlive = true;
+        }
 
         // attack method
         public override int Attack(/*Enemy target*/)
