@@ -3,6 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
+using System;
+using System.Collections.Generic;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -90,6 +92,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D atkButton;
         Texture2D switchButton;
 
+        // Rectangles for the buttons
+        Rectangle atkButtn;
+        Rectangle switchButtn;
+
+        bool attacking = false;
+        bool switching = false;
+
         // Make the character variables to test combat
         Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
         Geek nerd = new Geek(200, 20, 20, 20, true);
@@ -97,6 +106,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         // Make a enemy for test
         Enemy bad = new Enemy(120, 10, 10, 10, true);
+
+        // More test stuff
+        List<Enemy> enemies; 
+
+
 
         // Collision Methos
         protected bool Collide()
@@ -145,6 +159,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             // TODO: Add your initialization logic here
 
+            base.Initialize();
+
             // Assigning values to the vector2 
             BluePosition = new Vector2(0, 395);
             GreenPosition = new Vector2(1420, 395);
@@ -156,12 +172,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
             TitlePosition = new Vector2(95, 110);
             LogoPosition = new Vector2(586, 535);
             MousePosition = new Point(mState.X, mState.Y);
+<<<<<<< HEAD
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70); // Area for start button
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70); // Area for options button
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70); // Area for credits button
+=======
+            startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
+            optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
+            creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
+            atkButtn = new Rectangle(atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height);
+            switchButtn = new Rectangle(switchButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - switchButton.Bounds.Height * 4, switchButton.Bounds.Width, switchButton.Bounds.Height);
+
+>>>>>>> 239050403887e3ed988450dd498d690f6c17136b
             returnBPosition = new Vector2(470, 540);
 
-            base.Initialize();
+            // Test stuff
+            enemies = new List<Enemy>();
 
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
@@ -342,7 +368,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
         protected void UpdateGame(GameTime gameTime)
         {
             Combat();
-
         }
 
         // Draw Methods for each state
@@ -414,9 +439,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
             // try code
+            if (attacking == true)
+            {
+                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
+            if (switching == true)
+            {
+                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
             spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
-
             // Putting in return button to test attack
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
 
@@ -468,8 +500,11 @@ namespace TheAnomalousYouthSquad_Game_try_1
             LastmState = mState;
             mState = Mouse.GetState();
 
-            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 700 && mState.Y < 845 && mState.LeftButton == ButtonState.Pressed)
+            //Button click for attacking
+            if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)
             {
+                attacking = true;
+                switching = false;
                 int attack = nerd.Attack();
 
                 if(bad.EHealth <= 0)
@@ -484,7 +519,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 // bad.ChangeHealth(attack);
             }
 
-                
+            //Button click for switching character focus
+            if (mState.X >= switchButtn.X && mState.X <= switchButtn.X + switchButtn.Width && mState.Y >= switchButtn.Y && mState.Y < switchButtn.Y + switchButtn.Height && mState.LeftButton == ButtonState.Pressed)
+            {
+                switching = true;
+                attacking = false;
+            }
         }
 
     }
