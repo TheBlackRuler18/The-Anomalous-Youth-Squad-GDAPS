@@ -380,21 +380,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
             LastmState = mState;
             mState = Mouse.GetState();
 
-            /*while (bad.EHealth != 0 && nerd.GHealth != 0)
+            switch(turnBool)
             {
-                switch(turnBool)
-                {
-                    case true:
-                        playerCombat();
-                        break;
+                case true:
+                    if(nerd.GHealth != 0) playerCombat();
+                    break;
 
-                    case false:
-                        enemyCombat();
-                        break;
-                }
+                case false:
+                    if(bad.EHealth != 0) enemyCombat();
+                    break;
+            }
                 
-            }*/
-            if (turnBool == true)
+            /* if (turnBool == true)
             {
                 playerCombat();
 
@@ -402,7 +399,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             else
             {
                 enemyCombat();
-            }
+            } */
 
         }
 
@@ -559,7 +556,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void enemyCombat()
         {
-            if(bad.EHealth <= 0)
+            if(bad.EHealth >= 0)
             {
                 int attack = bad.Attack();
                 nerd.GHealth = nerd.GHealth - attack;
