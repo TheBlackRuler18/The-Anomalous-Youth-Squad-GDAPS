@@ -471,7 +471,21 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
-            // try code
+            //signals if the enemy or a party member has been defeated first.
+            if (bad.EHealth <= 0)
+            {
+                attacking = false;
+                switching = false;
+                spriteBatch.DrawString(font, "Enemy defeated!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
+            if (nerd.GHealth <= 0)
+            {
+                attacking = false;
+                switching = false;
+                spriteBatch.DrawString(font, "The Nerd has fallen.", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2 + 20), Color.Black);
+            }
+
+            // Pressing the attack or switch button will cause an action.
             if (attacking == true)
             {
                 spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
