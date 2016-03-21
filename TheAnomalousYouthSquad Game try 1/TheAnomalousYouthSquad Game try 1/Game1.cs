@@ -430,8 +430,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(CreditsButtons, creditsBPosition, Color.White);
             spriteBatch.Draw(OptionsButton, optionsBPosition, Color.White);
 
-            // Mouse Position test
-            spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
+            // Mouse Position test. Commented out for the actual game. Un-comment it out when needed.
+            //spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
             spriteBatch.End();
         }
 
@@ -478,7 +478,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             }
             if (switching == true)
             {
-                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.DrawString(font, "Changing selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
             spriteBatch.Draw(atkButton, atkButtn, Color.White);
             spriteBatch.Draw(switchButton, switchButtn, Color.White);
