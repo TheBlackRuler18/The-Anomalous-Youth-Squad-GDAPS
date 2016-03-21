@@ -491,9 +491,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
+<<<<<<< HEAD
             spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height ), Color.White);
 
+=======
+            spriteBatch.Draw(atkButton, atkButtn, Color.White);
+            spriteBatch.Draw(switchButton, switchButtn, Color.White);
+            // Putting in return button to test attack
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+>>>>>>> 9a5f942074cd74bbcb205e13925ac131e3cc69d4
 
             // Circle for the test attack
             spriteBatch.Draw(geek, new Rectangle((int) positionGeek.X, (int) positionGeek.Y, 500,375), Color.White);
