@@ -401,7 +401,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     if(bad.EHealth != 0) enemyCombat();
                     break;
             }
-                
+            //ReturnButtonInput(); //NOTE: I made the return button work in the game, but it's pointless because going back to the menu doesn't refresh the state of the battle.
             /* if (turnBool == true)
             {
                 playerCombat();
@@ -441,13 +441,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(CreditsButtons, creditsBPosition, Color.White);
             spriteBatch.Draw(OptionsButton, optionsBPosition, Color.White);
 
-<<<<<<< HEAD
             // Mouse Position test. Commented out for the actual game. Un-comment it out when needed.
             //spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
-=======
-            // Mouse Position test
-           // spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
->>>>>>> 74b195315495959d0b5e32ad5f722ca7379e6c1c
             spriteBatch.End();
         }
 
@@ -508,22 +503,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
             }
             if (switching == true)
             {
-<<<<<<< HEAD
-                spriteBatch.DrawString(font, "Changing selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
-=======
-                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
->>>>>>> 74b195315495959d0b5e32ad5f722ca7379e6c1c
+                spriteBatch.DrawString(font, "Switching selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
-<<<<<<< HEAD
-            spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
-            spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height ), Color.White);
 
-=======
             spriteBatch.Draw(atkButton, atkButtn, Color.White);
             spriteBatch.Draw(switchButton, switchButtn, Color.White);
+
             // Putting in return button to test attack
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
->>>>>>> 9a5f942074cd74bbcb205e13925ac131e3cc69d4
 
             // Circle for the test attack
             spriteBatch.Draw(geek, new Rectangle((int) positionGeek.X, (int) positionGeek.Y, 500,375), Color.White);
@@ -533,7 +520,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
            // spriteBatch.Draw(Logo, new Rectangle((int)LogoPosition.X, (int)LogoPosition.Y, 350, 300), Color.White);
 
             spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780), Color.Black);
-            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340,780), Color.Black);
+            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340, 780), Color.Black);
 
             spriteBatch.End();
         }
@@ -561,8 +548,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Method that handles clicking the return button and changing the state to the title screen 
         protected void ReturnButtonInput()
         {
-
-
             if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.TitleScreen;
