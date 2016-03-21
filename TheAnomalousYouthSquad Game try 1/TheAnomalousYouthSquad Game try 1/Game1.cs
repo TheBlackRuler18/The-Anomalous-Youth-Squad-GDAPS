@@ -110,9 +110,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Enemy bad = new Enemy(120, 10, 10, 10, true);
 
         // More test stuff
-        List<Enemy> enemies; 
+        List<Enemy> enemies;
 
-
+        // Sprites for the characters and enemies
+        Texture2D geek;
+        Texture2D alien;
+        Vector2 positionGeek;
+        Vector2 positionAlien;
 
         // Collision Methos
         protected bool Collide()
@@ -193,9 +197,12 @@ namespace TheAnomalousYouthSquad_Game_try_1
             // turn variable
             turnBool = true;
 
+            // Setting up the charcters
+            positionGeek = new Vector2(50, 400);
+            positionAlien = new Vector2(GraphicsDevice.Viewport.Width - 580, 330);
+
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
-
         }
 
         /// <summary>
@@ -244,6 +251,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
             // Load in game buttons
             atkButton = Content.Load<Texture2D>("SCAttack");
             switchButton = Content.Load<Texture2D>("SCSwitchSelec");
+
+            // Load in charcters rites
+            geek = Content.Load<Texture2D>("Geek Character");
+            alien = Content.Load<Texture2D>("Alien Character");
         }
 
         /// <summary>
@@ -430,8 +441,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(CreditsButtons, creditsBPosition, Color.White);
             spriteBatch.Draw(OptionsButton, optionsBPosition, Color.White);
 
+<<<<<<< HEAD
             // Mouse Position test. Commented out for the actual game. Un-comment it out when needed.
             //spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
+=======
+            // Mouse Position test
+           // spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
+>>>>>>> 74b195315495959d0b5e32ad5f722ca7379e6c1c
             spriteBatch.End();
         }
 
@@ -488,22 +504,36 @@ namespace TheAnomalousYouthSquad_Game_try_1
             // Pressing the attack or switch button will cause an action.
             if (attacking == true)
             {
-                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
             if (switching == true)
             {
+<<<<<<< HEAD
                 spriteBatch.DrawString(font, "Changing selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+=======
+                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
+>>>>>>> 74b195315495959d0b5e32ad5f722ca7379e6c1c
             }
+<<<<<<< HEAD
+            spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
+            spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height ), Color.White);
+
+=======
             spriteBatch.Draw(atkButton, atkButtn, Color.White);
             spriteBatch.Draw(switchButton, switchButtn, Color.White);
             // Putting in return button to test attack
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+>>>>>>> 9a5f942074cd74bbcb205e13925ac131e3cc69d4
 
             // Circle for the test attack
-            spriteBatch.Draw(bCircle, new Vector2(50, 400), Color.White);
-            spriteBatch.Draw(gCircle, new Vector2(GraphicsDevice.Viewport.Width - 100, 400), Color.White);
-            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(50, 510), Color.Black);
-            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width -140, 510), Color.Black);
+            spriteBatch.Draw(geek, new Rectangle((int) positionGeek.X, (int) positionGeek.Y, 500,375), Color.White);
+            spriteBatch.Draw(alien, new Rectangle((int) positionAlien.X,(int) positionAlien.Y, 600,425), Color.White);
+
+
+           // spriteBatch.Draw(Logo, new Rectangle((int)LogoPosition.X, (int)LogoPosition.Y, 350, 300), Color.White);
+
+            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780), Color.Black);
+            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340,780), Color.Black);
 
             spriteBatch.End();
         }
