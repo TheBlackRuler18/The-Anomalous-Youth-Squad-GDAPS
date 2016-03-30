@@ -5,11 +5,14 @@ using Microsoft.Xna.Framework.Media;
 using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Staes for the game
     enum GameStates { Intro, TitleScreen, Options, Credits, Game}
+
+    enum BattleStates { NerdTurn, JockTurn, CheerTurn, EnemyTurn, Enemy2Turn }
     // External tool = Windows form app that reads in files for the number of enemies and their stats for each level and sets them to enemy objects. It then stores them into a list for the level.
 
     /// <summary>
@@ -23,6 +26,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Set up State variable
         GameStates gState;
 
+        BattleStates bState;
         // Picture Properties for intro screen
         Texture2D bCircle;
         Texture2D gCircle;
@@ -38,9 +42,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         // Background Picture
         Texture2D GameBackground;
-
-        // Turn variable
-        bool turnBool;
 
         // Sound Effects for game
         SoundEffect TitleScreenMusic;
@@ -90,17 +91,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Texture2D returnButton;
         Vector2 returnBPosition;
 
-        // Button for attack in the game state
-        Texture2D atkButton;
-        Texture2D switchButton;
-
-        // Rectangles for the buttons
-        Rectangle atkButtn;
-        Rectangle switchButtn;
-
-        bool attacking = false;
-        bool switching = false;
-
         // Make the character variables to test combat
         Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
         Geek nerd = new Geek(200, 20, 20, 20, true);
@@ -108,15 +98,28 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         // Make a enemy for test
         Enemy bad = new Enemy(120, 10, 10, 10, true);
-
+        Enemy enemy = new Enemy(150, 10, 10, 10, true);
+            
         // More test stuff
         List<Enemy> enemies;
 
         // Sprites for the characters and enemies
         Texture2D geek;
         Texture2D alien;
+        Texture2D jock;
+        Texture2D cheerLeader;
         Vector2 positionGeek;
         Vector2 positionAlien;
+        Vector2 positionJock;
+        Vector2 positionCheerLeader;
+
+        // Sprites for the menu
+        Texture2D geekMenu;
+        Texture2D jockMenu;
+        Texture2D cheerMenu;
+        Vector2 geekMenuPosition;
+        Vector2 jockMenuPosition;
+        Vector2 cheerMenuPosition;
 
         // Collision Methos
         protected bool Collide()
@@ -186,20 +189,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
             startArea = new Rectangle((int)startBPosition.X, (int)startBPosition.Y, 256, 70);
             optionsArea = new Rectangle((int)optionsBPosition.X, (int)optionsBPosition.Y, 256, 70);
             creditsArea = new Rectangle((int)creditsBPosition.X, (int)creditsBPosition.Y, 256, 70);
-            atkButtn = new Rectangle(atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height);
-            switchButtn = new Rectangle(switchButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - switchButton.Bounds.Height * 4, switchButton.Bounds.Width, switchButton.Bounds.Height);
 
             returnBPosition = new Vector2(470, 540);
 
             // Test stuff
             enemies = new List<Enemy>();
 
-            // turn variable
-            turnBool = true;
-
             // Setting up the charcters
-            positionGeek = new Vector2(50, 400);
-            positionAlien = new Vector2(GraphicsDevice.Viewport.Width - 580, 330);
+            positionGeek = new Vector2(180, 350);
+            positionAlien = new Vector2(GraphicsDevice.Viewport.Width - 420, 355);
+            positionJock = new Vector2(130, 320);
+            positionCheerLeader = new Vector2(-40, 356);
+
+            // Setting up Menus
+            geekMenuPosition = new Vector2(0, 700);
+            jockMenuPosition = new Vector2(0, 700);
+            cheerMenuPosition = new Vector2(0, 700);
 
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
@@ -248,13 +253,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
             // Load in Return button
             returnButton = Content.Load<Texture2D>("Return Button");
 
-            // Load in game buttons
-            atkButton = Content.Load<Texture2D>("SCAttack");
-            switchButton = Content.Load<Texture2D>("SCSwitchSelec");
-
             // Load in charcters rites
             geek = Content.Load<Texture2D>("Geek Character");
             alien = Content.Load<Texture2D>("Alien Character");
+            jock = Content.Load<Texture2D>("Jock Charcater for game");
+            cheerLeader = Content.Load<Texture2D>("CheerLeader Charcter for game");
+
+            // Load in Charcater Menus
+            geekMenu = Content.Load<Texture2D>("Menu for game(Geek)");
+            jockMenu = Content.Load<Texture2D>("Menu for game(Jock)");
+            cheerMenu = Content.Load<Texture2D>("Menu for game(CheerLeader)");
         }
 
         /// <summary>
@@ -388,29 +396,40 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         protected void UpdateGame(GameTime gameTime)
         {
-            LastmState = mState;
-            mState = Mouse.GetState();
-
-            switch(turnBool)
+            switch (bState)
             {
-                case true:
-                    if(nerd.GHealth != 0) playerCombat();
+                case BattleStates.NerdTurn:
+                    if (nerd.GHealth != 0)
+                    {
+                        NerdCombat();
+                    }
                     break;
 
-                case false:
-                    if(bad.EHealth != 0) enemyCombat();
+                case BattleStates.EnemyTurn:
+                    if (bad.EHealth != 0)
+                    {
+                        enemyCombat();
+                    }
+                    break;
+                case BattleStates.JockTurn:
+                    if (football.JHealth != 0)
+                    {
+                        JockCombat();
+                    }
+                    break;
+                case BattleStates.CheerTurn:
+                    if (cheer.CHealth != 0)
+                    {
+                        CheerCombat();
+                    }
+                    break;
+                case BattleStates.Enemy2Turn:
+                    if (enemy.EHealth != 0)
+                    {
+                        enemyCombat2();
+                    }
                     break;
             }
-            //ReturnButtonInput(); //NOTE: I made the return button work in the game, but it's pointless because going back to the menu doesn't refresh the state of the battle.
-            /* if (turnBool == true)
-            {
-                playerCombat();
-
-            }
-            else
-            {
-                enemyCombat();
-            } */ // Commented out for neater switch statement
 
         }
 
@@ -482,60 +501,68 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
-            //signals if the enemy or a party member has been defeated first.
-            if (bad.EHealth <= 0)
+            // try code
+
+            if (nerd.IsAlive == true)
             {
-                attacking = false;
-                switching = false;
-                spriteBatch.DrawString(font, "Enemy defeated!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 440, 315), Color.White);
+                spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(460, 670), Color.Black);
             }
-            if (nerd.GHealth <= 0)
+            if (bad.IsAlive == true)
             {
-                attacking = false;
-                switching = false;
-                spriteBatch.DrawString(font, "The Nerd has fallen.", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2 + 20), Color.Black);
+                spriteBatch.Draw(alien, new Rectangle((int)positionAlien.X, (int)positionAlien.Y, 470, 295), Color.White);
+                spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 320, 670), Color.Black);
             }
-
-            // Pressing the attack or switch button will cause an action.
-            if (attacking == true)
+            if (enemy.IsAlive == true)
             {
-                spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.Draw(alien, new Rectangle((int)positionAlien.X - 400, (int)positionAlien.Y, 470, 295), Color.White);
+                spriteBatch.DrawString(font, "Enemy Health: " + enemy.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 680, 670), Color.Black);
             }
-            if (switching == true)
+            if (football.IsAlive == true)
             {
-                spriteBatch.DrawString(font, "Switching selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 220, 340), Color.White);
+                spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(240, 670), Color.Black);
             }
-<<<<<<< HEAD
+            if (cheer.IsAlive == true)
+            {
+                spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 200, 300), Color.White);
+                spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 670), Color.Black);
+            }
 
-            spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
-            spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height ), Color.White);
+            if (bState == BattleStates.NerdTurn)
+            {
+                spriteBatch.Draw(geekMenu, new Rectangle((int)geekMenuPosition.X, (int)geekMenuPosition.Y, 1520,150), Color.White);
+                spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(690, 848), Color.Black);
+                spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
+                spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
+                spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+            }
+            else if (bState == BattleStates.EnemyTurn)
+            {
+                spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+            }
+            else if (bState == BattleStates.JockTurn)
+            {
+                spriteBatch.Draw(jockMenu, new Rectangle((int)jockMenuPosition.X, (int)jockMenuPosition.Y, 1520, 150), Color.White);
+                spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(690, 848), Color.Black);
+                spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
+                spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
+                spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+            }
+            else if (bState == BattleStates.CheerTurn)
+            {
+                spriteBatch.Draw(cheerMenu, new Rectangle((int)cheerMenuPosition.X, (int)cheerMenuPosition.Y, 1520, 150), Color.White);
+                spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(690, 848), Color.Black);
+                spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
+                spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
+                spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+            }
+            else if (bState == BattleStates.Enemy2Turn)
+            {
+                spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+            }
 
-
-            spriteBatch.Draw(atkButton, atkButtn, Color.White);
-            spriteBatch.Draw(switchButton, switchButtn, Color.White);
-=======
-
-            spriteBatch.Draw(atkButton, atkButtn, Color.White);
-            spriteBatch.Draw(switchButton, switchButtn, Color.White);
-
-            // Putting in return button to test attack
-            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
->>>>>>> 96523aab79829b5fac73dfbc0d6fea8e14a59aea
-
-            // Circle for the test attack
-            spriteBatch.Draw(geek, new Rectangle((int) positionGeek.X, (int) positionGeek.Y, 500,375), Color.White);
-            spriteBatch.Draw(alien, new Rectangle((int) positionAlien.X,(int) positionAlien.Y, 600,425), Color.White);
-
-<<<<<<< HEAD
-            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780), Color.Black);
-            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340,780), Color.Black);
-=======
-
-           // spriteBatch.Draw(Logo, new Rectangle((int)LogoPosition.X, (int)LogoPosition.Y, 350, 300), Color.White);
-            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780/*GraphicsDevice.Viewport.Height / 2 - 100*/), Color.Black);
-            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340, 780/*GraphicsDevice.Viewport.Height / 2 - 100*/), Color.Black);
->>>>>>> 96523aab79829b5fac73dfbc0d6fea8e14a59aea
-
+            spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
             spriteBatch.End();
         }
 
@@ -566,53 +593,191 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 gState = GameStates.TitleScreen;
             }
+        }   
+
+        protected void enemyCombat()
+        {
+            Random rng = new Random();
+            int num = rng.Next(101);
+
+            if (num >= 0 && num < 40)
+            {
+                int attack = bad.Attack();
+                nerd.GHealth = nerd.GHealth - attack;
+            }
+            else if (num >= 41 && num < 80)
+            {
+                int attack = bad.Attack();
+                football.JHealth = football.JHealth - attack;
+            }
+            else
+            {
+                int attack = bad.Attack();
+                cheer.CHealth = cheer.CHealth - attack;
+            }
+
+            if (nerd.GHealth <= 0)
+            {
+                nerd.GHealth = 0;
+                nerd.IsAlive = false;
+            }
+            if (football.JHealth <= 0)
+            {
+                football.JHealth = 0;
+                football.IsAlive = false;
+            }
+            if (cheer.CHealth <= 0)
+            {
+                cheer.CHealth = 0;
+                cheer.IsAlive = false;
+            }
+
+            Thread.Sleep(3000);
+            bState = BattleStates.JockTurn;
         }
 
-        // Method to test attack
-        protected void playerCombat()
+        protected void enemyCombat2()
         {
-
-
-            //Button click for attacking
-            if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)//Released && LastmState.LeftButton == ButtonState.Pressed)
+            Random rng = new Random();
+            int num = rng.Next(101);
+            if (num >= 0 && num < 40)
             {
-                attacking = true;
-                switching = false;
+                int attack = enemy.Attack();
+                nerd.GHealth = nerd.GHealth - attack;
+            }
+            else if (num >= 41 && num < 80)
+            {
+                int attack = enemy.Attack();
+                football.JHealth = football.JHealth - attack;
+            }
+            else
+            {
+                int attack = enemy.Attack();
+                cheer.CHealth = cheer.CHealth - attack;
+            }
+
+            if (nerd.GHealth <= 0)
+            {
+                nerd.GHealth = 0;
+                nerd.IsAlive = false;
+            }
+            if (football.JHealth <= 0)
+            {
+                football.JHealth = 0;
+                football.IsAlive = false;
+            }
+            if (cheer.CHealth <= 0)
+            {
+                cheer.CHealth = 0;
+                cheer.IsAlive = false;
+            }
+
+            Thread.Sleep(3000);
+            bState = BattleStates.NerdTurn;
+        }
+
+        protected void NerdCombat()
+        {
+            //Button click for attacking
+            if (mState.X >= 1235 && mState.X <= 1480 && mState.Y >= 710 && mState.Y < 770 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                Random rng = new Random();
+                int num = rng.Next(101);
+
                 int attack = nerd.Attack();
-                bad.EHealth = bad.EHealth - attack;
+                if (num >= 0 && num < 50)
+                {
+                    bad.EHealth = bad.EHealth - attack;
+                }
+                else
+                {
+                    enemy.EHealth = enemy.EHealth - attack;
+                }
                 if (bad.EHealth <= 0)
                 {
                     bad.EHealth = 0;
                     bad.IsAlive = false;
                 }
-                turnBool = false;
-                // bad.ChangeHealth(attack);
+                if (enemy.EHealth <= 0)
+                {
+                    enemy.EHealth = 0;
+                    enemy.IsAlive = false;
+                };
+
+                bState = BattleStates.EnemyTurn;
+            }
+
+        }
+
+        protected void JockCombat()
+        {
+            //Button click for attacking
+            if (mState.X >= 1235 && mState.X <= 1480 && mState.Y >= 710 && mState.Y < 770 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                Random rng = new Random();
+                int num = rng.Next(101);
+
+                int attack = football.Attack();
+                if (num >= 0 && num < 50)
+                {
+                    bad.EHealth = bad.EHealth - attack;
+                }
+                else
+                {
+                    enemy.EHealth = enemy.EHealth - attack;
+                }
+                if (bad.EHealth <= 0)
+                {
+                    bad.EHealth = 0;
+                    bad.IsAlive = false;
+                }
+                if (enemy.EHealth <= 0)
+                {
+                    enemy.EHealth = 0;
+                    enemy.IsAlive = false;
+                }
+
+                bState = BattleStates.CheerTurn;
+            }
+
+        }
+
+        protected void CheerCombat()
+        {
+            //Button click for attacking
+            if (mState.X >= 1235 && mState.X <= 1480 && mState.Y >= 710 && mState.Y < 770 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                Random rng = new Random();
+                int num = rng.Next(101);
+
+                int attack = cheer.Attack();
+                if (num >= 0 && num < 50)
+                {
+                    bad.EHealth = bad.EHealth - attack;
+                }
+                else
+                {
+                    enemy.EHealth = enemy.EHealth - attack;
+                }
+                if (bad.EHealth <= 0)
+                {
+                    bad.EHealth = 0;
+                    bad.IsAlive = false;
+                }
+                if (enemy.EHealth <= 0)
+                {
+                    enemy.EHealth = 0;
+                    enemy.IsAlive = false;
+                }
+                bState = BattleStates.Enemy2Turn;
             }
 
             //Button click for switching character focus
-            if (mState.X >= switchButtn.X && mState.X <= switchButtn.X + switchButtn.Width && mState.Y >= switchButtn.Y && mState.Y < switchButtn.Y + switchButtn.Height && mState.LeftButton == ButtonState.Pressed)//Released && LastmState.LeftButton == ButtonState.Pressed)
-            {
-                switching = true;
-                attacking = false;
-            }
+            /* if (mState.X >= 91 && mState.X <= 160 && mState.Y >= 850 && mState.Y < 920 && mState.LeftButton == ButtonState.Pressed)
+             {
+                 switching = true;
+                 attacking = false;
+             }*/
         }
-
-        protected void enemyCombat()
-        {
-            if(bad.EHealth >= 0)
-            {
-                int attack = bad.Attack();
-                nerd.GHealth = nerd.GHealth - attack;
-            }
-            if(nerd.GHealth <= 0)
-            {
-                nerd.GHealth = 0;
-                nerd.IsAlive = false;
-            }
-            turnBool = true;
-        }
-
-
-
     }
 }
