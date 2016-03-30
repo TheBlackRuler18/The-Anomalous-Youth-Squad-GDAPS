@@ -401,7 +401,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     if(bad.EHealth != 0) enemyCombat();
                     break;
             }
-                
+            //ReturnButtonInput(); //NOTE: I made the return button work in the game, but it's pointless because going back to the menu doesn't refresh the state of the battle.
             /* if (turnBool == true)
             {
                 playerCombat();
@@ -441,8 +441,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Draw(CreditsButtons, creditsBPosition, Color.White);
             spriteBatch.Draw(OptionsButton, optionsBPosition, Color.White);
 
-            // Mouse Position test
-           // spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
+            // Mouse Position test. Commented out for the actual game. Un-comment it out when needed.
+            //spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
             spriteBatch.End();
         }
 
@@ -482,15 +482,30 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.Begin();
             spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
-            // try code
+            //signals if the enemy or a party member has been defeated first.
+            if (bad.EHealth <= 0)
+            {
+                attacking = false;
+                switching = false;
+                spriteBatch.DrawString(font, "Enemy defeated!", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2), Color.Black);
+            }
+            if (nerd.GHealth <= 0)
+            {
+                attacking = false;
+                switching = false;
+                spriteBatch.DrawString(font, "The Nerd has fallen.", new Vector2(GraphicsDevice.Viewport.Width / 2, GraphicsDevice.Viewport.Height / 2 + 20), Color.Black);
+            }
+
+            // Pressing the attack or switch button will cause an action.
             if (attacking == true)
             {
                 spriteBatch.DrawString(font, "Character attack!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
             if (switching == true)
             {
-                spriteBatch.DrawString(font, "Changing focus!", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
+                spriteBatch.DrawString(font, "Switching selected character! (Note: But nobody was there.)", new Vector2(GraphicsDevice.Viewport.Width / 2 - 80, GraphicsDevice.Viewport.Height / 2), Color.Black);
             }
+<<<<<<< HEAD
 
             spriteBatch.Draw(atkButton, new Rectangle(0 + atkButton.Bounds.Width, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height), Color.White);
             spriteBatch.Draw(switchButton, new Rectangle(0 + atkButton.Bounds.Width * 2, GraphicsDevice.Viewport.Height - atkButton.Bounds.Height * 4, atkButton.Bounds.Width, atkButton.Bounds.Height ), Color.White);
@@ -498,13 +513,28 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             spriteBatch.Draw(atkButton, atkButtn, Color.White);
             spriteBatch.Draw(switchButton, switchButtn, Color.White);
+=======
+
+            spriteBatch.Draw(atkButton, atkButtn, Color.White);
+            spriteBatch.Draw(switchButton, switchButtn, Color.White);
+
+            // Putting in return button to test attack
+            spriteBatch.Draw(returnButton, returnBPosition, Color.White);
+>>>>>>> 96523aab79829b5fac73dfbc0d6fea8e14a59aea
 
             // Circle for the test attack
             spriteBatch.Draw(geek, new Rectangle((int) positionGeek.X, (int) positionGeek.Y, 500,375), Color.White);
             spriteBatch.Draw(alien, new Rectangle((int) positionAlien.X,(int) positionAlien.Y, 600,425), Color.White);
 
+<<<<<<< HEAD
             spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780), Color.Black);
             spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340,780), Color.Black);
+=======
+
+           // spriteBatch.Draw(Logo, new Rectangle((int)LogoPosition.X, (int)LogoPosition.Y, 350, 300), Color.White);
+            spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth , new Vector2(245, 780/*GraphicsDevice.Viewport.Height / 2 - 100*/), Color.Black);
+            spriteBatch.DrawString(font, "Enemy Health: " + bad.EHealth, new Vector2(GraphicsDevice.Viewport.Width - 340, 780/*GraphicsDevice.Viewport.Height / 2 - 100*/), Color.Black);
+>>>>>>> 96523aab79829b5fac73dfbc0d6fea8e14a59aea
 
             spriteBatch.End();
         }
@@ -513,17 +543,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
 
             // If statement for start button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Game;
             }
             // If statement for credits button click
-            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 632 && mState.X <= 895 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Credits;
             }  
             // if statement for options button click
-            if(mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
+            if(mState.X >= 632 && mState.X <= 895 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.Options; 
             }
@@ -532,9 +562,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // Method that handles clicking the return button and changing the state to the title screen 
         protected void ReturnButtonInput()
         {
-
-
-            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= 575 && mState.X <= 1005 && mState.Y >= 665 && mState.Y < 805 && mState.LeftButton == ButtonState.Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 gState = GameStates.TitleScreen;
             }
@@ -546,7 +574,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
 
             //Button click for attacking
-            if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= atkButtn.X && mState.X <= atkButtn.X + atkButtn.Width && mState.Y >= atkButtn.Y && mState.Y <= atkButtn.Y + atkButtn.Height && mState.LeftButton == ButtonState.Pressed)//Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 attacking = true;
                 switching = false;
@@ -562,7 +590,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             }
 
             //Button click for switching character focus
-            if (mState.X >= switchButtn.X && mState.X <= switchButtn.X + switchButtn.Width && mState.Y >= switchButtn.Y && mState.Y < switchButtn.Y + switchButtn.Height && mState.LeftButton == ButtonState.Pressed)
+            if (mState.X >= switchButtn.X && mState.X <= switchButtn.X + switchButtn.Width && mState.Y >= switchButtn.Y && mState.Y < switchButtn.Y + switchButtn.Height && mState.LeftButton == ButtonState.Pressed)//Released && LastmState.LeftButton == ButtonState.Pressed)
             {
                 switching = true;
                 attacking = false;
