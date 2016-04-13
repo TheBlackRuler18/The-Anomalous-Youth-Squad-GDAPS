@@ -12,8 +12,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
     // Staes for the game
     enum GameStates { Intro, TitleScreen, Options, Credits, Game }
     enum Round1States { NerdTurn, JockTurn, CheerTurn, EnemyTurn, Enemy2Turn }
-
-    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheertTurn }
+    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheerTurn }
     enum Round3States { CheerTurn, NerdTurn, EnemyTurn, JockTurn, Enemy2Turn, BossTurn }
     enum Round4States { Enemy2Turn, CheerTurn, EnemyTurn, NerdTurn, JockTurn }
     enum Round5States { NerdTurn, Enemy2Turn, JockTurn, EnemyTurn, CheerTurn }
@@ -121,9 +120,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 returnBPosition;
 
         // Make the character variables to test combat
-        Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
-        Geek nerd = new Geek(200, 20, 20, 20, true);
-        Jock football = new Jock(150, 20, 15, 15, true);
+        Cheerleader cheer = new Cheerleader(100, 10, 150, 10, true);
+        Geek nerd = new Geek(200, 20, 40, 20, true);
+        Jock football = new Jock(150, 20, 30, 15, true);
 
         // Round 1 Enemies
         Enemy e1Round1 = new Enemy(120, 10, 10, 10, true);
@@ -575,10 +574,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         }
                         if (e2Round2.EHealth == 0)
                         {
-                            round2State = Round2States.CheertTurn;
+                            round2State = Round2States.CheerTurn;
                         }
                         break;
-                    case Round2States.CheertTurn:
+                    case Round2States.CheerTurn:
                         if (cheer.CHealth != 0)
                         {
                             CheerCombat();
@@ -1342,7 +1341,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
                 }
-                else if (round2State == Round2States.CheertTurn)
+                else if (round2State == Round2States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
                     spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(690, 848), Color.Black);
@@ -2408,7 +2407,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
 
                 Thread.Sleep(3000);
-                round2State = Round2States.CheertTurn;
+                round2State = Round2States.CheerTurn;
             }
             if (round == 3)
             {
