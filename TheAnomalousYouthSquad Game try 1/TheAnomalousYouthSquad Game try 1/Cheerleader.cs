@@ -39,32 +39,32 @@ namespace TheAnomalousYouthSquad_Game_try_1
         // attack method
         public override int Attack(/*Enemy target*/)
         {
-            cAttack = 0;
+            int attackDamage;
             Random rng = new Random();
             int chance = rng.Next(101);
 
-            if(chance >= 0 && chance < 25)
+            if(chance >= 0 && chance < 26)
             {
-                cAttack = 0;
+                attackDamage = 0;
             }
-            else if(chance >= 26 && chance < 45)
+            else if(chance >= 26 && chance < 46)
             {
-                cAttack = 5;
+                attackDamage = (int)(cAttack / 5.0);
             }
-            else if(chance >= 46 && chance < 65)
+            else if(chance >= 46 && chance < 66)
             {
-                cAttack = 10;
+                attackDamage = (int)(cAttack / 2.5);
             }
-            else if(chance >= 66 && chance < 85)
+            else if(chance >= 66 && chance < 86)
             {
-                cAttack = 15;
+                attackDamage = (int)(cAttack / 1.25);
             }
             else
             {
-                cAttack = 30;
+                attackDamage = cAttack;
             }
 
-            return cAttack;
+            return attackDamage;
         }
 
         public override void Draw(SpriteBatch sbatch)

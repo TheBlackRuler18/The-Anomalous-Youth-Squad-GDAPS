@@ -12,8 +12,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
     // Staes for the game
     enum GameStates { Intro, TitleScreen, Options, Credits, Game }
     enum Round1States { NerdTurn, JockTurn, CheerTurn, EnemyTurn, Enemy2Turn }
-
-    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheertTurn }
+    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheerTurn }
     enum Round3States { CheerTurn, NerdTurn, EnemyTurn, JockTurn, Enemy2Turn, BossTurn }
     enum Round4States { Enemy2Turn, CheerTurn, EnemyTurn, NerdTurn, JockTurn }
     enum Round5States { NerdTurn, Enemy2Turn, JockTurn, EnemyTurn, CheerTurn }
@@ -121,9 +120,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 returnBPosition;
 
         // Make the character variables to test combat
-        Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
-        Geek nerd = new Geek(200, 20, 20, 20, true);
-        Jock football = new Jock(150, 20, 15, 15, true);
+        Cheerleader cheer = new Cheerleader(100, 10, 150, 10, true);
+        Geek nerd = new Geek(200, 20, 40, 20, true);
+        Jock football = new Jock(150, 20, 30, 15, true);
 
         // Round 1 Enemies
         Enemy e1Round1 = new Enemy(120, 10, 10, 10, true);
@@ -192,6 +191,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 geekMenuPosition;
         Vector2 jockMenuPosition;
         Vector2 cheerMenuPosition;
+
+        int attack;
 
         // Collision Methos
         protected bool Collide()
@@ -575,10 +576,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         }
                         if (e2Round2.EHealth == 0)
                         {
-                            round2State = Round2States.CheertTurn;
+                            round2State = Round2States.CheerTurn;
                         }
                         break;
-                    case Round2States.CheertTurn:
+                    case Round2States.CheerTurn:
                         if (cheer.CHealth != 0)
                         {
                             CheerCombat();
@@ -1342,7 +1343,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
                 }
-                else if (round2State == Round2States.CheertTurn)
+                else if (round2State == Round2States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
                     spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(690, 848), Color.Black);
@@ -1943,17 +1944,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round1.Attack();
+                    attack = e1Round1.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round1.Attack();
+                    attack = e1Round1.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round1.Attack();
+                    attack = e1Round1.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -1982,17 +1983,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round2.Attack();
+                    attack = e1Round2.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round2.Attack();
+                    attack = e1Round2.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round2.Attack();
+                    attack = e1Round2.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2020,17 +2021,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round3.Attack();
+                    attack = e1Round3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round3.Attack();
+                    attack = e1Round3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round3.Attack();
+                    attack = e1Round3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2059,17 +2060,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round4.Attack();
+                    attack = e1Round4.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round4.Attack();
+                    attack = e1Round4.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round4.Attack();
+                    attack = e1Round4.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2098,17 +2099,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round5.Attack();
+                    attack = e1Round5.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round5.Attack();
+                    attack = e1Round5.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round5.Attack();
+                    attack = e1Round5.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2137,17 +2138,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round6.Attack();
+                    attack = e1Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round6.Attack();
+                    attack = e1Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round6.Attack();
+                    attack = e1Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2176,17 +2177,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round7.Attack();
+                    attack = e1Round7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round7.Attack();
+                    attack = e1Round7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round7.Attack();
+                    attack = e1Round7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2215,17 +2216,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round8.Attack();
+                    attack = e1Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round8.Attack();
+                    attack = e1Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round8.Attack();
+                    attack = e1Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2254,17 +2255,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round9.Attack();
+                    attack = e1Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round9.Attack();
+                    attack = e1Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round9.Attack();
+                    attack = e1Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2293,17 +2294,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e1Round10.Attack();
+                    attack = e1Round10.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e1Round10.Attack();
+                    attack = e1Round10.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e1Round10.Attack();
+                    attack = e1Round10.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2338,17 +2339,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round1.Attack();
+                    attack = e2Round1.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round1.Attack();
+                    attack = e2Round1.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round1.Attack();
+                    attack = e2Round1.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2377,17 +2378,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round2.Attack();
+                    attack = e2Round2.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round2.Attack();
+                    attack = e2Round2.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round2.Attack();
+                    attack = e2Round2.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2408,24 +2409,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
 
                 Thread.Sleep(3000);
-                round2State = Round2States.CheertTurn;
+                round2State = Round2States.CheerTurn;
             }
             if (round == 3)
             {
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round3.Attack();
+                    attack = e2Round3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round3.Attack();
+                    attack = e2Round3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round3.Attack();
+                    attack = e2Round3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2454,17 +2455,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round4.Attack();
+                    attack = e2Round4.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round4.Attack();
+                    attack = e2Round4.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round4.Attack();
+                    attack = e2Round4.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2493,17 +2494,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round5.Attack();
+                    attack = e2Round5.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round5.Attack();
+                    attack = e2Round5.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round5.Attack();
+                    attack = e2Round5.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2532,17 +2533,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round6.Attack();
+                    attack = e2Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round6.Attack();
+                    attack = e2Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round6.Attack();
+                    attack = e2Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2571,17 +2572,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round7.Attack();
+                    attack = e2Round7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round7.Attack();
+                    attack = e2Round7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round7.Attack();
+                    attack = e2Round7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2610,17 +2611,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round8.Attack();
+                    attack = e2Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round8.Attack();
+                    attack = e2Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round8.Attack();
+                    attack = e2Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2649,17 +2650,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round9.Attack();
+                    attack = e2Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round9.Attack();
+                    attack = e2Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round9.Attack();
+                    attack = e2Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2688,17 +2689,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e2Round10.Attack();
+                    attack = e2Round10.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e2Round10.Attack();
+                    attack = e2Round10.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e2Round10.Attack();
+                    attack = e2Round10.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2733,17 +2734,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e3Round6.Attack();
+                    attack = e3Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e3Round6.Attack();
+                    attack = e3Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e3Round6.Attack();
+                    attack = e3Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2772,17 +2773,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e3Round8.Attack();
+                    attack = e3Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e3Round8.Attack();
+                    attack = e3Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e3Round8.Attack();
+                    attack = e3Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2810,17 +2811,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = e3Round9.Attack();
+                    attack = e3Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = e3Round9.Attack();
+                    attack = e3Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = e3Round9.Attack();
+                    attack = e3Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2855,17 +2856,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = bossRound3.Attack();
+                    attack = bossRound3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = bossRound3.Attack();
+                    attack = bossRound3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = bossRound3.Attack();
+                    attack = bossRound3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2894,17 +2895,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = bossRound7.Attack();
+                    attack = bossRound7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = bossRound7.Attack();
+                    attack = bossRound7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = bossRound7.Attack();
+                    attack = bossRound7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2932,17 +2933,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    int attack = bossFinal.Attack();
+                    attack = bossFinal.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    int attack = bossFinal.Attack();
+                    attack = bossFinal.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    int attack = bossFinal.Attack();
+                    attack = bossFinal.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2977,7 +2978,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3005,7 +3006,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3033,7 +3034,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3070,7 +3071,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3098,7 +3099,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3126,7 +3127,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3163,7 +3164,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3200,7 +3201,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3237,7 +3238,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3274,7 +3275,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = nerd.Attack();
+                    attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
@@ -3319,7 +3320,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3347,7 +3348,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3375,7 +3376,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3412,7 +3413,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3440,7 +3441,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3468,7 +3469,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3505,7 +3506,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3542,7 +3543,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3579,7 +3580,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3616,7 +3617,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = football.Attack();
+                    attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
@@ -3661,7 +3662,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3689,7 +3690,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3717,7 +3718,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3754,7 +3755,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3782,7 +3783,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3810,7 +3811,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3847,7 +3848,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3884,7 +3885,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3921,7 +3922,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3958,7 +3959,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    int attack = cheer.Attack();
+                    attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
