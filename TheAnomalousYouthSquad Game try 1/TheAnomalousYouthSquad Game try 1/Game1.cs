@@ -6,13 +6,15 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.IO;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
     // Staes for the game
-    enum GameStates { Intro, TitleScreen, Options, Credits, Game }
+    enum GameStates { Intro, TitleScreen, Options, Credits, Game, LoadScreen }
     enum Round1States { NerdTurn, JockTurn, CheerTurn, EnemyTurn, Enemy2Turn }
-    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheerTurn }
+
+    enum Round2States { EnemyTurn, JockTurn, NerdTurn, Enemy2Turn, CheertTurn }
     enum Round3States { CheerTurn, NerdTurn, EnemyTurn, JockTurn, Enemy2Turn, BossTurn }
     enum Round4States { Enemy2Turn, CheerTurn, EnemyTurn, NerdTurn, JockTurn }
     enum Round5States { NerdTurn, Enemy2Turn, JockTurn, EnemyTurn, CheerTurn }
@@ -22,7 +24,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
     enum Round9States { NerdTurn, CheerTurn, Enemy2Turn, Enemy3Turn, JockTurn, EnemyTurn }
     enum Round10States { BossTurn, JockTurn, Enemy2Turn, CheerTurn, EnemyTurn, NerdTurn }
 
-    enum LoadingStates { LoadScreen }
     // External tool = Windows form app that reads in files for the number of enemies and their stats for each level and sets them to enemy objects. It then stores them into a list for the level.
 
     /// <summary>
@@ -120,9 +121,126 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 returnBPosition;
 
         // Make the character variables to test combat
-        Cheerleader cheer = new Cheerleader(100, 10, 150, 10, true);
-        Geek nerd = new Geek(200, 20, 40, 20, true);
-        Jock football = new Jock(150, 20, 30, 15, true);
+        Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
+        Geek nerd = new Geek(200, 20, 20, 20, true);
+        Jock football = new Jock(150, 20, 15, 15, true);
+
+        // All of the int stat values that will be set by the files
+        // Enemies for round 1
+        int e1Round1Health = 0;
+        int e1Round1Attack = 0;
+        int e1Round1Defense = 0;
+        int e1Round1Speed = 0;
+        //
+        int e2Round1Health = 0;
+        int e2Round1Attack = 0;
+        int e2Round1Defense = 0;
+        int e2Round1Speed = 0;
+        // Enemies for round 2
+        int e1Round2Health = 0;
+        int e1Round2Attack = 0;
+        int e1Round2Defense = 0;
+        int e1Round2Speed = 0;
+        //
+        int e2Round2Health = 0;
+        int e2Round2Attack = 0;
+        int e2Round2Defense = 0;
+        int e2Round2Speed = 0;
+        // Enemies for round 3
+        int e1Round3Health = 0;
+        int e1Round3Attack = 0;
+        int e1Round3Defense = 0;
+        int e1Round3Speed = 0;
+        //
+        int e2Round3Health = 0;
+        int e2Round3Attack = 0;
+        int e2Round3Defense = 0;
+        int e2Round3Speed = 0;
+        // Enemies for round 4
+        int e1Round4Health = 0;
+        int e1Round4Attack = 0;
+        int e1Round4Defense = 0;
+        int e1Round4Speed = 0;
+        //
+        int e2Round4Health = 0;
+        int e2Round4Attack = 0;
+        int e2Round4Defense = 0;
+        int e2Round4Speed = 0;
+        // Enemies for round 5
+        int e1Round5Health = 0;
+        int e1Round5Attack = 0;
+        int e1Round5Defense = 0;
+        int e1Round5Speed = 0;
+        //
+        int e2Round5Health = 0;
+        int e2Round5Attack = 0;
+        int e2Round5Defense = 0;
+        int e2Round5Speed = 0;
+        // Enemies for round 6
+        int e1Round6Health = 0;
+        int e1Round6Attack = 0;
+        int e1Round6Defense = 0;
+        int e1Round6Speed = 0;
+        //
+        int e2Round6Health = 0;
+        int e2Round6Attack = 0;
+        int e2Round6Defense = 0;
+        int e2Round6Speed = 0;
+        //
+        int e3Round6Health = 0;
+        int e3Round6Attack = 0;
+        int e3Round6Defense = 0;
+        int e3Round6Speed = 0;
+        // Enemies for round 7
+        int e1Round7Health = 0;
+        int e1Round7Attack = 0;
+        int e1Round7Defense = 0;
+        int e1Round7Speed = 0;
+        //
+        int e2Round7Health = 0;
+        int e2Round7Attack = 0;
+        int e2Round7Defense = 0;
+        int e2Round7Speed = 0;
+        // Enemies for round 8
+        int e1Round8Health = 0;
+        int e1Round8Attack = 0;
+        int e1Round8Defense = 0;
+        int e1Round8Speed = 0;
+        //
+        int e2Round8Health = 0;
+        int e2Round8Attack = 0;
+        int e2Round8Defense = 0;
+        int e2Round8Speed = 0;
+        // 
+        int e3Round8Health = 0;
+        int e3Round8Attack = 0;
+        int e3Round8Defense = 0;
+        int e3Round8Speed = 0;
+        // Enemies for round 9
+        int e1Round9Health = 0;
+        int e1Round9Attack = 0;
+        int e1Round9Defense = 0;
+        int e1Round9Speed = 0;
+        //
+        int e2Round9Health = 0;
+        int e2Round9Attack = 0;
+        int e2Round9Defense = 0;
+        int e2Round9Speed = 0;
+        //
+        int e3Round9Health = 0;
+        int e3Round9Attack = 0;
+        int e3Round9Defense = 0;
+        int e3Round9Speed = 0;
+        // Enemies for round 10
+        int e1Round10Health = 0;
+        int e1Round10Attack = 0;
+        int e1Round10Defense = 0;
+        int e1Round10Speed = 0;
+        //
+        int e2Round10Health = 0;
+        int e2Round10Attack = 0;
+        int e2Round10Defense = 0;
+        int e2Round10Speed = 0;
 
         // Round 1 Enemies
         Enemy e1Round1 = new Enemy(120, 10, 10, 10, true);
@@ -192,8 +310,20 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 jockMenuPosition;
         Vector2 cheerMenuPosition;
 
-        int attack;
+        // Earth sprite for the earth animations
+        EarthSprite Earth;
+        int msPerFrame;
 
+        // Music for Game
+        private Song GameTitleMusic;
+        private Song GameCombatMusic;
+        private Song GameLoadScreenMusic;
+
+
+
+        int TitleMusicCounter = 960;
+        int LoadScreenMusicCounter = 1440;
+        int CombatMusicCouter = 1965;
         // Collision Methos
         protected bool Collide()
         {
@@ -275,6 +405,52 @@ namespace TheAnomalousYouthSquad_Game_try_1
             jockMenuPosition = new Vector2(0, 800);
             cheerMenuPosition = new Vector2(0, 800);
 
+            FileLoader();
+
+            e1Round1 = new Enemy(e1Round1Health, e1Round1Attack, e1Round1Defense, e1Round1Speed, true);
+            e2Round1 = new Enemy(e2Round1Health, e2Round1Attack, e2Round1Defense, e2Round1Speed, true);
+
+            e1Round2 = new Enemy(e1Round2Health, e1Round2Attack, e1Round2Defense, e1Round2Speed, true);
+            e2Round2 = new Enemy(e2Round2Health, e1Round2Attack, e1Round2Defense, e1Round2Speed, true);
+
+            // Round 3
+            e1Round3 = new Enemy(e1Round3Health, e1Round3Attack, e1Round3Defense, e1Round3Speed, true);
+            e2Round3 = new Enemy(e2Round3Health, e2Round3Attack, e2Round3Defense, e2Round3Speed, true);
+            bossRound3 = new Enemy(200, 10, 10, 10, true);
+
+            // Round 4
+            e1Round4 = new Enemy(e1Round4Health, e1Round4Attack, e1Round4Defense, e1Round4Speed, true);
+            e2Round4 = new Enemy(e2Round4Health, e2Round4Attack, e2Round4Defense, e2Round4Speed, true);
+
+            // Round 5
+            e1Round5 = new Enemy(e1Round5Health, e1Round5Attack, e1Round5Defense, e1Round5Speed, true);
+            e2Round5 = new Enemy(e2Round5Health, e2Round5Attack, e2Round5Defense, e2Round5Speed, true);
+
+            // Round 6 
+            e1Round6 = new Enemy(e1Round6Health, e1Round6Attack, e1Round6Defense, e1Round6Speed, true);
+            e2Round6 = new Enemy(e2Round6Health, e2Round6Attack, e2Round6Defense, e2Round6Speed, true);
+            e3Round6 = new Enemy(e3Round6Health, e3Round6Attack, e3Round6Defense, e3Round6Speed, true);
+
+            // Round 7
+            e1Round7 = new Enemy(e1Round7Health, e1Round7Attack, e1Round7Defense, e1Round7Speed, true);
+            e2Round7 = new Enemy(e2Round7Health, e2Round7Attack, e2Round7Defense, e2Round7Speed, true);
+            bossRound7 = new Enemy(100, 10, 10, 10, true);
+
+            // Round 8 
+            e1Round8 = new Enemy(e1Round8Health, e1Round8Attack, e1Round8Defense, e1Round8Speed, true);
+            e2Round8 = new Enemy(e2Round8Health, e2Round8Attack, e2Round8Defense, e2Round8Speed, true);
+            e3Round8 = new Enemy(e3Round8Health, e3Round8Attack, e3Round8Defense, e3Round8Speed, true);
+
+            // Round 9
+            e1Round9 = new Enemy(e1Round9Health, e1Round9Attack, e1Round9Defense, e1Round9Speed, true);
+            e2Round9 = new Enemy(e2Round9Health, e2Round9Attack, e2Round9Defense, e2Round9Speed, true);
+            e3Round9 = new Enemy(e3Round9Health, e3Round9Attack, e3Round9Defense, e3Round9Speed, true);
+
+            // Round 10
+            e1Round10 = new Enemy(e1Round10Health, e1Round10Attack, e1Round10Defense, e1Round10Speed, true);
+            e2Round10 = new Enemy(e2Round10Health, e2Round10Attack, e2Round10Defense, e2Round10Speed, true);
+            bossFinal = new Enemy(350, 10, 10, 10, true);
+
             // Make mouse curson appear on screen
             this.IsMouseVisible = true;
         }
@@ -341,6 +517,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
             StreetBackgroundRound7 = Content.Load<Texture2D>("Street background4");
             OvalOffice = Content.Load<Texture2D>("oval office background");
             WhiteHouse = Content.Load<Texture2D>("whitehouse background");
+
+            // Loading in the EarthSprite
+            Texture2D EarthPic = Content.Load<Texture2D>("Earth for game");
+            Earth = new EarthSprite(EarthPic, new Point(213, 160), 13, 4, 4, 100);
+
+            // Load in Music
+            GameTitleMusic = Content.Load<Song>("Game TitleScreen Music.wav");
+            GameCombatMusic = Content.Load<Song>("Game Combat music.wav");
+            GameLoadScreenMusic = Content.Load<Song>("Game LoadScreen Music1.wav");
+
+            MediaPlayer.IsRepeating = true;
         }
 
         /// <summary>
@@ -372,18 +559,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 case GameStates.Intro:
                     UpdateIntro(gameTime);
-                    TitleScreenMusic.Play();
-                    BluePosition.X += 2;
-                    GreenPosition.X -= 2;
-                    PurplePosition.Y += .95f;
-                    this.IsMouseVisible = false;
-
-                    // Collide If statement for intro
-                    if (Collide())
-                    {
-                        System.Threading.Thread.Sleep(2500);
-                        gState = GameStates.TitleScreen;
-                    }
                     break;
 
                 case GameStates.TitleScreen:
@@ -404,6 +579,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 case GameStates.Game:
                     UpdateGame(gameTime);
                     this.IsMouseVisible = true;
+                    break;
+
+                case GameStates.LoadScreen:
+                    UpdateLoadScreen(gameTime);
                     break;
             }
 
@@ -444,35 +623,115 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 case GameStates.Game:
                     DrawGame(gameTime);
                     break;
+
+                case GameStates.LoadScreen:
+                    DrawLoadScreen(gameTime);
+                    break;
             }
+
         }
+
+        // Update for the load screen
 
         // Update Methos for each state
         protected void UpdateIntro(GameTime gameTime)
         {
+            TitleScreenMusic.Play();
+            BluePosition.X += 2;
+            GreenPosition.X -= 2;
+            PurplePosition.Y += .95f;
+            this.IsMouseVisible = false;
 
+            // Collide If statement for intro
+            if (Collide())
+            {
+                System.Threading.Thread.Sleep(2500);
+                gState = GameStates.TitleScreen;
+            }
         }
 
         protected void UpdateTitleScreen(GameTime gameTime)
         {
+            if (TitleMusicCounter == 960)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+            }
+            TitleMusicCounter -= 1;
+            if (TitleMusicCounter < 0)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+                TitleMusicCounter = 960;
+            }
             TitleScreenInput();
         }
 
         protected void UpdateOptions(GameTime gameTime)
         {
+            if (TitleMusicCounter == 960)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+            }
+            TitleMusicCounter -= 1;
+            if (TitleMusicCounter < 0)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+                TitleMusicCounter = 960;
+            }
+
+            //GameTitleMusic.Play();
             ReturnButtonInput();
         }
 
         protected void UpdateCredits(GameTime gameTime)
         {
+            if (TitleMusicCounter == 960)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+            }
+            TitleMusicCounter -= 1;
+            if (TitleMusicCounter < 0)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+                TitleMusicCounter = 960;
+            }
+
+
+            //MediaPlayer.Play(GameTitleMusic);
             ReturnButtonInput();
         }
 
         protected void UpdateGame(GameTime gameTime)
         {
+            /*TitleMusicCounter = 0;
+           
+            if (CombatMusicCouter == 1965)
+            {
+                MediaPlayer.Play(GameCombatMusic);
+            }
+            CombatMusicCouter -= 1;
+            if (CombatMusicCouter <= 0)
+            {
+                MediaPlayer.Play(GameTitleMusic);
+                CombatMusicCouter = 1965;
+            }*/
+
             // Switch statement for round1 turns
             if (round == 1)
             {
+
+                TitleMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 switch (round1State)
                 {
                     case Round1States.NerdTurn:
@@ -480,7 +739,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round1State = Round1States.EnemyTurn;
                         }
@@ -491,7 +750,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round1.EHealth == 0)
+                        else if (e1Round1.EHealth == 0)
                         {
                             round1State = Round1States.JockTurn;
                         }
@@ -501,7 +760,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round1State = Round1States.CheerTurn;
                         }
@@ -511,7 +770,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round1State = Round1States.Enemy2Turn;
                         }
@@ -521,7 +780,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round1.EHealth == 0)
+                        else if (e2Round1.EHealth == 0)
                         {
                             round1State = Round1States.NerdTurn;
                         }
@@ -530,11 +789,25 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round1.EHealth == 0 && e2Round1.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
             if (round == 2)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Switch for round2 turns
                 switch (round2State)
                 {
@@ -543,7 +816,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round2.EHealth == 0)
+                        else if (e1Round2.EHealth == 0)
                         {
                             round2State = Round2States.JockTurn;
                         }
@@ -554,7 +827,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round2State = Round2States.NerdTurn;
                         }
@@ -564,7 +837,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round2State = Round2States.Enemy2Turn;
                         }
@@ -574,17 +847,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round2.EHealth == 0)
+                        else if (e2Round2.EHealth == 0)
                         {
-                            round2State = Round2States.CheerTurn;
+                            round2State = Round2States.CheertTurn;
                         }
                         break;
-                    case Round2States.CheerTurn:
+                    case Round2States.CheertTurn:
                         if (cheer.CHealth != 0)
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round2State = Round2States.EnemyTurn;
                         }
@@ -592,12 +865,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round2.EHealth == 0 && e2Round2.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 3)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round 3
                 switch (round3State)
                 {
@@ -606,7 +893,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round3State = Round3States.NerdTurn;
                         }
@@ -627,7 +914,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round3.EHealth == 0)
+                        else if (e1Round3.EHealth == 0)
                         {
                             round3State = Round3States.JockTurn;
                         }
@@ -637,7 +924,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round3State = Round3States.Enemy2Turn;
                         }
@@ -647,7 +934,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round3.EHealth == 0)
+                        else if (e2Round3.EHealth == 0)
                         {
                             round3State = Round3States.BossTurn;
                         }
@@ -657,7 +944,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             BossCombat();
                         }
-                        if (bossRound3.EHealth == 0)
+                        else if (bossRound3.EHealth == 0)
                         {
                             round3State = Round3States.CheerTurn;
                         }
@@ -665,12 +952,57 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round3.EHealth == 0 && e2Round3.EHealth == 0 && bossRound3.EHealth == 0)
                 {
-                    round++;
+                    if (cheer.IsAlive == false)
+                    {
+                        cheer.IsAlive = true;
+                    }
+                    if (football.IsAlive == false)
+                    {
+                        football.IsAlive = true;
+                    }
+                    if (nerd.IsAlive == false)
+                    {
+                        nerd.IsAlive = true; ;
+                    }
+
+                    cheer.CHealth += 30;
+                    nerd.GHealth += 30;
+                    football.JHealth += 30;
+
+
+                    if (cheer.CHealth > 100)
+                    {
+                        cheer.CHealth = 100;
+                    }
+                    if (football.JHealth > 120)
+                    {
+                        football.JHealth = 120;
+                    }
+                    if (nerd.GHealth > 200)
+                    {
+                        nerd.GHealth = 200;
+                    }
+
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 4)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round4
                 switch (round4State)
                 {
@@ -679,7 +1011,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round4.EHealth == 0)
+                        else if (e2Round4.EHealth == 0)
                         {
                             round4State = Round4States.CheerTurn;
                         }
@@ -690,7 +1022,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round4State = Round4States.EnemyTurn;
                         }
@@ -700,7 +1032,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round4.EHealth == 0)
+                        else if (e1Round4.EHealth == 0)
                         {
                             round4State = Round4States.NerdTurn;
                         }
@@ -710,7 +1042,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round4State = Round4States.JockTurn;
                         }
@@ -720,7 +1052,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round4State = Round4States.Enemy2Turn;
                         }
@@ -728,11 +1060,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round4.EHealth == 0 && e2Round4.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
             if (round == 5)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
 
                 // Swtch stament for round 5
                 switch (round5State)
@@ -742,7 +1087,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round5State = Round5States.Enemy2Turn;
                         }
@@ -753,7 +1098,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round5.EHealth == 0)
+                        else if (e2Round5.EHealth == 0)
                         {
                             round5State = Round5States.JockTurn;
                         }
@@ -763,7 +1108,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round5State = Round5States.EnemyTurn;
                         }
@@ -773,7 +1118,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round5.EHealth == 0)
+                        else if (e1Round5.EHealth == 0)
                         {
                             round5State = Round5States.CheerTurn;
                         }
@@ -783,7 +1128,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round5State = Round5States.NerdTurn;
                         }
@@ -791,12 +1136,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round5.EHealth == 0 && e2Round5.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 6)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round6
                 switch (round6State)
                 {
@@ -805,7 +1164,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             EnemyCombat3();
                         }
-                        if (e3Round6.EHealth == 0)
+                        else if (e3Round6.EHealth == 0)
                         {
                             round6State = Round6States.NerdTurn;
                         }
@@ -816,7 +1175,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round6State = Round6States.Enemy2Turn;
                         }
@@ -826,7 +1185,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round6.EHealth == 0)
+                        else if (e2Round6.EHealth == 0)
                         {
                             round6State = Round6States.JockTurn;
                         }
@@ -836,7 +1195,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round6State = Round6States.CheerTurn;
                         }
@@ -846,7 +1205,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round6State = Round6States.EnemyTurn;
                         }
@@ -856,7 +1215,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round6.EHealth == 0)
+                        else if (e1Round6.EHealth == 0)
                         {
                             round6State = Round6States.Enemy3Turn;
                         }
@@ -864,12 +1223,25 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round6.EHealth == 0 && e2Round6.EHealth == 0 && e3Round6.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 7)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
 
                 // Swtch statement for round7
                 switch (round7State)
@@ -879,7 +1251,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             BossCombat();
                         }
-                        if (bossRound7.EHealth == 0)
+                        else if (bossRound7.EHealth == 0)
                         {
                             round7State = Round7States.CheerTurn;
                         }
@@ -890,7 +1262,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth <= 0)
                         {
                             round7State = Round7States.NerdTurn;
                         }
@@ -900,7 +1272,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth <= 0)
                         {
                             round7State = Round7States.EnemyTurn;
                         }
@@ -910,7 +1282,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (e1Round7.EHealth == 0)
+                        else if (e1Round7.EHealth <= 0)
                         {
                             round7State = Round7States.Enemy2Turn;
                         }
@@ -920,7 +1292,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round7.EHealth == 0)
+                        else if (e2Round7.EHealth <= 0)
                         {
                             round7State = Round7States.JockTurn;
                         }
@@ -930,7 +1302,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth <= 0)
                         {
                             round7State = Round7States.BossTurn;
                         }
@@ -938,12 +1310,56 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round7.EHealth == 0 && e2Round7.EHealth == 0 && bossRound7.EHealth == 0)
                 {
-                    round++;
+                    if (cheer.IsAlive == false)
+                    {
+                        cheer.IsAlive = true;
+                    }
+                    if (football.IsAlive == false)
+                    {
+                        football.IsAlive = true;
+                    }
+                    if (nerd.IsAlive == false)
+                    {
+                        nerd.IsAlive = true;
+                    }
+
+                    cheer.CHealth += 30;
+                    nerd.GHealth += 30;
+                    football.JHealth += 30;
+
+                    if (cheer.CHealth > 100)
+                    {
+                        cheer.CHealth = 100;
+                    }
+                    if (football.JHealth > 120)
+                    {
+                        football.JHealth = 120;
+                    }
+                    if (nerd.GHealth > 200)
+                    {
+                        nerd.GHealth = 200;
+                    }
+
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 8)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round8
                 switch (round8State)
                 {
@@ -952,7 +1368,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round8State = Round8States.Enemy2Turn;
                         }
@@ -963,7 +1379,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round8.EHealth == 0)
+                        else if (e2Round8.EHealth == 0)
                         {
                             round8State = Round8States.Enemy3Turn;
                         }
@@ -973,7 +1389,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             EnemyCombat3();
                         }
-                        if (e3Round8.EHealth == 0)
+                        else if (e3Round8.EHealth == 0)
                         {
                             round8State = Round8States.NerdTurn;
                         }
@@ -983,7 +1399,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round8State = Round8States.EnemyTurn;
                         }
@@ -993,7 +1409,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round8.EHealth == 0)
+                        else if (e1Round8.EHealth == 0)
                         {
                             round8State = Round8States.CheerTurn;
                         }
@@ -1003,7 +1419,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round8State = Round8States.JockTurn;
                         }
@@ -1011,12 +1427,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round8.EHealth == 0 && e2Round8.EHealth == 0 && e3Round8.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
 
             if (round == 9)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round 9
                 switch (round9State)
                 {
@@ -1025,7 +1455,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round9State = Round9States.CheerTurn;
                         }
@@ -1036,7 +1466,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round9State = Round9States.Enemy2Turn;
                         }
@@ -1046,7 +1476,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round9.EHealth == 0)
+                        else if (e2Round9.EHealth == 0)
                         {
                             round9State = Round9States.Enemy3Turn;
                         }
@@ -1056,7 +1486,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             EnemyCombat3();
                         }
-                        if (e3Round9.EHealth == 0)
+                        else if (e3Round9.EHealth == 0)
                         {
                             round9State = Round9States.JockTurn;
                         }
@@ -1066,7 +1496,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round9State = Round9States.EnemyTurn;
                         }
@@ -1076,7 +1506,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round9.EHealth == 0)
+                        else if (e1Round9.EHealth == 0)
                         {
                             round9State = Round9States.NerdTurn;
                         }
@@ -1084,11 +1514,25 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round9.EHealth == 0 && e2Round9.EHealth == 0 && e3Round9.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
             if (round == 10)
             {
+
+                LoadScreenMusicCounter = 0;
+
+                if (CombatMusicCouter == 1965)
+                {
+                    MediaPlayer.Play(GameCombatMusic);
+                }
+                CombatMusicCouter -= 1;
+                if (CombatMusicCouter <= 0)
+                {
+                    MediaPlayer.Play(GameTitleMusic);
+                    CombatMusicCouter = 1965;
+                }
+
                 // Swtch statement for round10
                 switch (round10State)
                 {
@@ -1097,7 +1541,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             BossCombat();
                         }
-                        if (bossFinal.EHealth == 0)
+                        else if (bossFinal.EHealth == 0)
                         {
                             round10State = Round10States.JockTurn;
                         }
@@ -1108,7 +1552,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             JockCombat();
                         }
-                        if (football.JHealth == 0)
+                        else if (football.JHealth == 0)
                         {
                             round10State = Round10States.Enemy2Turn;
                         }
@@ -1118,7 +1562,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat2();
                         }
-                        if (e2Round10.EHealth == 0)
+                        else if (e2Round10.EHealth == 0)
                         {
                             round10State = Round10States.CheerTurn;
                         }
@@ -1128,7 +1572,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             CheerCombat();
                         }
-                        if (cheer.CHealth == 0)
+                        else if (cheer.CHealth == 0)
                         {
                             round10State = Round10States.EnemyTurn;
                         }
@@ -1138,7 +1582,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             enemyCombat();
                         }
-                        if (e1Round10.EHealth == 0)
+                        else if (e1Round10.EHealth == 0)
                         {
                             round10State = Round10States.NerdTurn;
                         }
@@ -1148,7 +1592,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         {
                             NerdCombat();
                         }
-                        if (nerd.GHealth == 0)
+                        else if (nerd.GHealth == 0)
                         {
                             round10State = Round10States.BossTurn;
                         }
@@ -1156,10 +1600,38 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round10.EHealth == 0 && e2Round10.EHealth == 0 && bossFinal.EHealth == 0)
                 {
-                    round++;
+                    gState = GameStates.LoadScreen;
                 }
             }
+
+
+
         }
+        protected void UpdateLoadScreen(GameTime gameTime)
+        {
+            if (LoadScreenMusicCounter == 1440)
+            {
+                MediaPlayer.Play(GameLoadScreenMusic);
+            }
+            LoadScreenMusicCounter -= 1;
+            if (LoadScreenMusicCounter < 0)
+            {
+                MediaPlayer.Play(GameLoadScreenMusic);
+                LoadScreenMusicCounter = 1440;
+            }
+
+            Earth.Update(gameTime);
+            if (Earth.Loop == 3)
+            {
+                gState = GameStates.Game;
+                round++;
+                Earth.Loop = 0;
+                LoadScreenMusicCounter = 0;
+                MediaPlayer.Stop();
+                MediaPlayer.Play(GameCombatMusic);
+            }
+        }
+
 
         // Draw Methods for each state
         protected void DrawIntro(GameTime gameTime)
@@ -1297,6 +1769,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
+
                 if (nerd.IsAlive == true)
                 {
                     spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
@@ -1343,7 +1816,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
                 }
-                else if (round2State == Round2States.CheerTurn)
+                else if (round2State == Round2States.CheertTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
                     spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(690, 848), Color.Black);
@@ -1361,6 +1834,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             if (round == 3)
             {
                 spriteBatch.Draw(gStateBackground, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+
 
                 if (nerd.IsAlive == true)
                 {
@@ -1431,6 +1905,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 spriteBatch.Draw(StreetBackgroundRound4, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
+
                 if (nerd.IsAlive == true)
                 {
                     spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
@@ -1495,6 +1970,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 spriteBatch.Draw(StreetBackgroundRound5, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
+
                 if (nerd.IsAlive == true)
                 {
                     spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
@@ -1558,6 +2034,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             if (round == 6)
             {
                 spriteBatch.Draw(StreetBackgroundRound6, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
+
 
                 if (nerd.IsAlive == true)
                 {
@@ -1628,6 +2105,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 spriteBatch.Draw(StreetBackgroundRound7, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
 
+
                 if (nerd.IsAlive == true)
                 {
                     spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
@@ -1669,7 +2147,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 else if (round7State == Round7States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Turn 1", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round7State == Round7States.JockTurn)
                 {
@@ -1689,14 +2167,13 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 else if (round7State == Round7States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Turn 2", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
             if (round == 8)
             {
                 spriteBatch.Draw(StreetBackgroundRound7, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-
 
                 if (nerd.IsAlive == true)
                 {
@@ -1766,7 +2243,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
             if (round == 9)
             {
                 spriteBatch.Draw(WhiteHouse, new Rectangle(0, 0, GraphicsDevice.Viewport.Width, GraphicsDevice.Viewport.Height), Color.White);
-
 
                 if (nerd.IsAlive == true)
                 {
@@ -1905,22 +2381,36 @@ namespace TheAnomalousYouthSquad_Game_try_1
             spriteBatch.End();
         }
 
+        protected void DrawLoadScreen(GameTime gameTime)
+        {
+            GraphicsDevice.Clear(Color.Black);
+
+            spriteBatch.Begin();
+
+            Earth.Draw(gameTime, spriteBatch);
+
+            spriteBatch.End();
+        }
+
         protected void TitleScreenInput()
         {
 
             // If statement for start button click
             if (mState.X >= 792 && mState.X <= 1055 && mState.Y >= 285 && mState.Y < 370 && mState.LeftButton == ButtonState.Pressed)
             {
+                MediaPlayer.Stop();
                 gState = GameStates.Game;
             }
             // If statement for credits button click
             if (mState.X >= 792 && mState.X <= 1055 && mState.Y >= 425 && mState.Y < 520 && mState.LeftButton == ButtonState.Pressed)
             {
+                MediaPlayer.Stop();
                 gState = GameStates.Credits;
             }
             // if statement for options button click
             if (mState.X >= 792 && mState.X <= 1055 && mState.Y >= 595 && mState.Y < 680 && mState.LeftButton == ButtonState.Pressed)
             {
+                MediaPlayer.Stop();
                 gState = GameStates.Options;
             }
         }
@@ -1930,6 +2420,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
         {
             if (mState.X >= 735 && mState.X <= 1165 && mState.Y >= 835 && mState.Y < 975 && mState.LeftButton == ButtonState.Pressed)
             {
+                TitleMusicCounter = 0;
                 gState = GameStates.TitleScreen;
             }
         }
@@ -1944,17 +2435,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round1.Attack();
+                    int attack = e1Round1.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round1.Attack();
+                    int attack = e1Round1.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round1.Attack();
+                    int attack = e1Round1.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -1983,17 +2474,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round2.Attack();
+                    int attack = e1Round2.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round2.Attack();
+                    int attack = e1Round2.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round2.Attack();
+                    int attack = e1Round2.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2021,17 +2512,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round3.Attack();
+                    int attack = e1Round3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round3.Attack();
+                    int attack = e1Round3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round3.Attack();
+                    int attack = e1Round3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2060,17 +2551,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round4.Attack();
+                    int attack = e1Round4.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round4.Attack();
+                    int attack = e1Round4.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round4.Attack();
+                    int attack = e1Round4.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2099,17 +2590,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round5.Attack();
+                    int attack = e1Round5.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round5.Attack();
+                    int attack = e1Round5.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round5.Attack();
+                    int attack = e1Round5.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2138,17 +2629,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round6.Attack();
+                    int attack = e1Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round6.Attack();
+                    int attack = e1Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round6.Attack();
+                    int attack = e1Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2177,17 +2668,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round7.Attack();
+                    int attack = e1Round7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round7.Attack();
+                    int attack = e1Round7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round7.Attack();
+                    int attack = e1Round7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2216,17 +2707,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round8.Attack();
+                    int attack = e1Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round8.Attack();
+                    int attack = e1Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round8.Attack();
+                    int attack = e1Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2255,17 +2746,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round9.Attack();
+                    int attack = e1Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round9.Attack();
+                    int attack = e1Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round9.Attack();
+                    int attack = e1Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2294,17 +2785,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e1Round10.Attack();
+                    int attack = e1Round10.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e1Round10.Attack();
+                    int attack = e1Round10.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e1Round10.Attack();
+                    int attack = e1Round10.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2339,17 +2830,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round1.Attack();
+                    int attack = e2Round1.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round1.Attack();
+                    int attack = e2Round1.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round1.Attack();
+                    int attack = e2Round1.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2378,17 +2869,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round2.Attack();
+                    int attack = e2Round2.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round2.Attack();
+                    int attack = e2Round2.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round2.Attack();
+                    int attack = e2Round2.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2409,24 +2900,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
 
                 Thread.Sleep(3000);
-                round2State = Round2States.CheerTurn;
+                round2State = Round2States.CheertTurn;
             }
             if (round == 3)
             {
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round3.Attack();
+                    int attack = e2Round3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round3.Attack();
+                    int attack = e2Round3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round3.Attack();
+                    int attack = e2Round3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2455,17 +2946,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round4.Attack();
+                    int attack = e2Round4.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round4.Attack();
+                    int attack = e2Round4.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round4.Attack();
+                    int attack = e2Round4.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2494,17 +2985,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round5.Attack();
+                    int attack = e2Round5.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round5.Attack();
+                    int attack = e2Round5.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round5.Attack();
+                    int attack = e2Round5.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2533,17 +3024,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round6.Attack();
+                    int attack = e2Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round6.Attack();
+                    int attack = e2Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round6.Attack();
+                    int attack = e2Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2572,17 +3063,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round7.Attack();
+                    int attack = e2Round7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round7.Attack();
+                    int attack = e2Round7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round7.Attack();
+                    int attack = e2Round7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2611,17 +3102,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round8.Attack();
+                    int attack = e2Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round8.Attack();
+                    int attack = e2Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round8.Attack();
+                    int attack = e2Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2650,17 +3141,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round9.Attack();
+                    int attack = e2Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round9.Attack();
+                    int attack = e2Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round9.Attack();
+                    int attack = e2Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2689,17 +3180,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e2Round10.Attack();
+                    int attack = e2Round10.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e2Round10.Attack();
+                    int attack = e2Round10.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e2Round10.Attack();
+                    int attack = e2Round10.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2734,17 +3225,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e3Round6.Attack();
+                    int attack = e3Round6.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e3Round6.Attack();
+                    int attack = e3Round6.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e3Round6.Attack();
+                    int attack = e3Round6.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2773,17 +3264,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e3Round8.Attack();
+                    int attack = e3Round8.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e3Round8.Attack();
+                    int attack = e3Round8.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e3Round8.Attack();
+                    int attack = e3Round8.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2811,17 +3302,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = e3Round9.Attack();
+                    int attack = e3Round9.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = e3Round9.Attack();
+                    int attack = e3Round9.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = e3Round9.Attack();
+                    int attack = e3Round9.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2856,17 +3347,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = bossRound3.Attack();
+                    int attack = bossRound3.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = bossRound3.Attack();
+                    int attack = bossRound3.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = bossRound3.Attack();
+                    int attack = bossRound3.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2895,17 +3386,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = bossRound7.Attack();
+                    int attack = bossRound7.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = bossRound7.Attack();
+                    int attack = bossRound7.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = bossRound7.Attack();
+                    int attack = bossRound7.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2933,17 +3424,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (num >= 0 && num <= 40)
                 {
-                    attack = bossFinal.Attack();
+                    int attack = bossFinal.Attack();
                     nerd.GHealth = nerd.GHealth - attack;
                 }
                 else if (num >= 41 && num < 80)
                 {
-                    attack = bossFinal.Attack();
+                    int attack = bossFinal.Attack();
                     football.JHealth = football.JHealth - attack;
                 }
                 else
                 {
-                    attack = bossFinal.Attack();
+                    int attack = bossFinal.Attack();
                     cheer.CHealth = cheer.CHealth - attack;
                 }
 
@@ -2978,7 +3469,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3006,7 +3497,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3034,7 +3525,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3071,7 +3562,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3099,7 +3590,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3127,7 +3618,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3164,7 +3655,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3201,7 +3692,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3238,7 +3729,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3275,7 +3766,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = nerd.Attack();
+                    int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
@@ -3320,7 +3811,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3348,7 +3839,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3376,7 +3867,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3413,7 +3904,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3441,7 +3932,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3469,7 +3960,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3506,7 +3997,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3543,7 +4034,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3580,7 +4071,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3617,7 +4108,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = football.Attack();
+                    int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
@@ -3662,7 +4153,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round1.EHealth = e1Round1.EHealth - attack;
@@ -3690,7 +4181,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round2.EHealth = e1Round2.EHealth - attack;
@@ -3718,7 +4209,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round3.EHealth = e1Round3.EHealth - attack;
@@ -3755,7 +4246,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round4.EHealth = e1Round4.EHealth - attack;
@@ -3783,7 +4274,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
                         e1Round5.EHealth = e1Round5.EHealth - attack;
@@ -3811,7 +4302,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round6.EHealth = e1Round6.EHealth - attack;
@@ -3848,7 +4339,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round7.EHealth = e1Round7.EHealth - attack;
@@ -3885,7 +4376,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round8.EHealth = e1Round8.EHealth - attack;
@@ -3922,7 +4413,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round9.EHealth = e1Round9.EHealth - attack;
@@ -3959,7 +4450,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     Random rng = new Random();
                     int num = rng.Next(101);
 
-                    attack = cheer.Attack();
+                    int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
                         e1Round10.EHealth = e1Round10.EHealth - attack;
@@ -4024,6 +4515,238 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 Thread.Sleep(3000);
                 round1State = Round1States.NerdTurn;
             }
+        }
+
+        protected void FileLoader()
+        {
+            // Enemy 1
+            BinaryReader e1Round1Load = new BinaryReader(File.OpenRead("Enemy Maker1.dat"));
+
+            e1Round1Health = e1Round1Load.ReadInt32();
+            e1Round1Attack = e1Round1Load.ReadInt32();
+            e1Round1Defense = e1Round1Load.ReadInt32();
+            e1Round1Speed = e1Round1Load.ReadInt32();
+
+            e1Round1Load.Close();
+
+            // Enemy 2
+            BinaryReader e2Round1Load = new BinaryReader(File.OpenRead("Enemy Maker2.dat"));
+
+            e2Round1Health = e2Round1Load.ReadInt32();
+            e2Round1Attack = e2Round1Load.ReadInt32();
+            e2Round1Defense = e2Round1Load.ReadInt32();
+            e2Round1Speed = e2Round1Load.ReadInt32();
+
+            e2Round1Load.Close();
+
+            // Enemy 3
+            BinaryReader e1Round2Load = new BinaryReader(File.OpenRead("Enemy Maker3.dat"));
+
+            e1Round2Health = e1Round2Load.ReadInt32();
+            e1Round2Attack = e1Round2Load.ReadInt32();
+            e1Round2Defense = e1Round2Load.ReadInt32();
+            e1Round2Speed = e1Round2Load.ReadInt32();
+
+            e1Round2Load.Close();
+
+            // Enemy 4
+            BinaryReader e2Round2Load = new BinaryReader(File.OpenRead("Enemy Maker4.dat"));
+
+            e2Round2Health = e2Round2Load.ReadInt32();
+            e2Round2Attack = e2Round2Load.ReadInt32();
+            e2Round2Defense = e2Round2Load.ReadInt32();
+            e2Round2Speed = e2Round2Load.ReadInt32();
+
+            e2Round2Load.Close();
+
+            // Enemy 5
+            BinaryReader e1Round3Load = new BinaryReader(File.OpenRead("Enemy Maker5.dat"));
+
+            e1Round3Health = e1Round3Load.ReadInt32();
+            e1Round3Attack = e1Round3Load.ReadInt32();
+            e1Round3Defense = e1Round3Load.ReadInt32();
+            e1Round3Speed = e1Round3Load.ReadInt32();
+
+            e1Round3Load.Close();
+
+            // Enemy 6
+            BinaryReader e2Round3Load = new BinaryReader(File.OpenRead("Enemy Maker6.dat"));
+
+            e2Round3Health = e2Round3Load.ReadInt32();
+            e2Round3Attack = e2Round3Load.ReadInt32();
+            e2Round3Defense = e2Round3Load.ReadInt32();
+            e2Round3Speed = e2Round3Load.ReadInt32();
+
+            e2Round3Load.Close();
+
+            // Enemy 7
+            BinaryReader e1Round4Load = new BinaryReader(File.OpenRead("Enemy Maker7.dat"));
+
+            e1Round4Health = e1Round4Load.ReadInt32();
+            e1Round4Attack = e1Round4Load.ReadInt32();
+            e1Round4Defense = e1Round4Load.ReadInt32();
+            e1Round4Speed = e1Round4Load.ReadInt32();
+
+            e1Round4Load.Close();
+
+            // Enemy 8
+            BinaryReader e2Round4Load = new BinaryReader(File.OpenRead("Enemy Maker8.dat"));
+
+            e2Round4Health = e2Round4Load.ReadInt32();
+            e2Round4Attack = e2Round4Load.ReadInt32();
+            e2Round4Defense = e2Round4Load.ReadInt32();
+            e2Round4Speed = e2Round4Load.ReadInt32();
+
+            e2Round1Load.Close();
+
+            // Enemy 9
+            BinaryReader e1Round5Load = new BinaryReader(File.OpenRead("Enemy Maker9.dat"));
+
+            e1Round5Health = e1Round5Load.ReadInt32();
+            e1Round5Attack = e1Round5Load.ReadInt32();
+            e1Round5Defense = e1Round5Load.ReadInt32();
+            e1Round5Speed = e1Round5Load.ReadInt32();
+
+            e1Round5Load.Close();
+
+            // Enemy 10
+            BinaryReader e2Round5Load = new BinaryReader(File.OpenRead("Enemy Maker10.dat"));
+
+            e2Round5Health = e2Round5Load.ReadInt32();
+            e2Round5Attack = e2Round5Load.ReadInt32();
+            e2Round5Defense = e2Round5Load.ReadInt32();
+            e2Round5Speed = e2Round5Load.ReadInt32();
+
+            e2Round5Load.Close();
+
+            // Enemy 11
+            BinaryReader e1Round6Load = new BinaryReader(File.OpenRead("Enemy Maker11.dat"));
+
+            e1Round6Health = e1Round6Load.ReadInt32();
+            e1Round6Attack = e1Round6Load.ReadInt32();
+            e1Round6Defense = e1Round6Load.ReadInt32();
+            e1Round6Speed = e1Round6Load.ReadInt32();
+
+            e1Round6Load.Close();
+
+            // Enemy 12
+            BinaryReader e2Round6Load = new BinaryReader(File.OpenRead("Enemy Maker12.dat"));
+
+            e2Round6Health = e2Round6Load.ReadInt32();
+            e2Round6Attack = e2Round6Load.ReadInt32();
+            e2Round6Defense = e2Round6Load.ReadInt32();
+            e2Round6Speed = e2Round6Load.ReadInt32();
+
+            e2Round1Load.Close();
+
+            // Enemy 13
+            BinaryReader e3Round6Load = new BinaryReader(File.OpenRead("Enemy Maker13.dat"));
+            e3Round6Health = e3Round6Load.ReadInt32();
+            e3Round6Attack = e3Round6Load.ReadInt32();
+            e3Round6Defense = e3Round6Load.ReadInt32();
+            e3Round6Speed = e3Round6Load.ReadInt32();
+
+            e3Round6Load.Close();
+
+            // Enemy 14
+            BinaryReader e1Round7Load = new BinaryReader(File.OpenRead("Enemy Maker14.dat"));
+
+            e1Round7Health = e1Round7Load.ReadInt32();
+            e1Round7Attack = e1Round7Load.ReadInt32();
+            e1Round7Defense = e1Round7Load.ReadInt32();
+            e1Round7Speed = e1Round7Load.ReadInt32();
+
+            e1Round7Load.Close();
+
+            // Enemy 15
+            BinaryReader e2Round7Load = new BinaryReader(File.OpenRead("Enemy Maker15.dat"));
+
+            e2Round7Health = e2Round7Load.ReadInt32();
+            e2Round7Attack = e2Round7Load.ReadInt32();
+            e2Round7Defense = e2Round7Load.ReadInt32();
+            e2Round7Speed = e2Round7Load.ReadInt32();
+
+            e2Round7Load.Close();
+
+            // Enemy 16
+            BinaryReader e1Round8Load = new BinaryReader(File.OpenRead("Enemy Maker16.dat"));
+
+            e1Round8Health = e1Round8Load.ReadInt32();
+            e1Round8Attack = e1Round8Load.ReadInt32();
+            e1Round8Defense = e1Round8Load.ReadInt32();
+            e1Round8Speed = e1Round8Load.ReadInt32();
+
+            e1Round8Load.Close();
+
+            // Enemy 17
+            BinaryReader e2Round8Load = new BinaryReader(File.OpenRead("Enemy Maker17.dat"));
+
+            e2Round8Health = e2Round8Load.ReadInt32();
+            e2Round8Attack = e2Round8Load.ReadInt32();
+            e2Round8Defense = e2Round8Load.ReadInt32();
+            e2Round8Speed = e2Round8Load.ReadInt32();
+
+            e2Round8Load.Close();
+
+            // Enemy 18
+            BinaryReader e3Round8Load = new BinaryReader(File.OpenRead("Enemy Maker18.dat"));
+
+            e3Round8Health = e3Round8Load.ReadInt32();
+            e3Round8Attack = e3Round8Load.ReadInt32();
+            e3Round8Defense = e3Round8Load.ReadInt32();
+            e3Round8Speed = e3Round8Load.ReadInt32();
+
+            e3Round8Load.Close();
+
+            // Enemy 19
+            BinaryReader e1Round9Load = new BinaryReader(File.OpenRead("Enemy Maker19.dat"));
+
+            e1Round9Health = e1Round9Load.ReadInt32();
+            e1Round9Attack = e1Round9Load.ReadInt32();
+            e1Round9Defense = e1Round9Load.ReadInt32();
+            e1Round9Speed = e1Round9Load.ReadInt32();
+
+            e1Round9Load.Close();
+
+            // Enemy 20
+            BinaryReader e2Round9Load = new BinaryReader(File.OpenRead("Enemy Maker20.dat"));
+
+            e2Round9Health = e2Round9Load.ReadInt32();
+            e2Round9Attack = e2Round9Load.ReadInt32();
+            e2Round9Defense = e2Round9Load.ReadInt32();
+            e2Round9Speed = e2Round9Load.ReadInt32();
+
+            e2Round9Load.Close();
+
+            // Enemy 21
+            BinaryReader e3Round9Load = new BinaryReader(File.OpenRead("Enemy Maker21.dat"));
+
+            e3Round9Health = e3Round9Load.ReadInt32();
+            e3Round9Attack = e3Round9Load.ReadInt32();
+            e3Round9Defense = e3Round9Load.ReadInt32();
+            e3Round9Speed = e3Round9Load.ReadInt32();
+
+            e3Round9Load.Close();
+
+            // Enemy 22
+            BinaryReader e1Round10Load = new BinaryReader(File.OpenRead("Enemy Maker22.dat"));
+
+            e1Round10Health = e1Round10Load.ReadInt32();
+            e1Round10Attack = e1Round10Load.ReadInt32();
+            e1Round10Defense = e1Round10Load.ReadInt32();
+            e1Round10Speed = e1Round10Load.ReadInt32();
+
+            e1Round10Load.Close();
+
+            // Enemy 23
+            BinaryReader e2Round10Load = new BinaryReader(File.OpenRead("Enemy Maker23.dat"));
+
+            e2Round10Health = e2Round10Load.ReadInt32();
+            e2Round10Attack = e2Round10Load.ReadInt32();
+            e2Round10Defense = e2Round10Load.ReadInt32();
+            e2Round10Speed = e2Round10Load.ReadInt32();
+
+            e2Round10Load.Close();
         }
     }
 }
