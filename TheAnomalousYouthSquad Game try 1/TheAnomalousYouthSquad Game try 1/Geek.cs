@@ -2,11 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -17,59 +12,66 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private int gDefense;
         private int gAttack;
         private bool isAlive;
-        private Rectangle gRect;
-
+        private int specialMeter;
         public int GHealth { get { return gHealth; } set { gHealth = value; } }
-        public int GAttack { get { return gAttack; } }
+        public int GAttack { get { return gAttack; } set { gAttack = value; } }
         public int GDefense { get { return gDefense; } }
         public int GSpeed { get { return gSpeed; } }
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
+        public int SpecialMeter { get { return specialMeter; } set { specialMeter = value; } }
 
         // Constructor
         public Geek(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
         {
             gHealth = h;
-            gSpeed = s;
             gAttack = a;
+            gSpeed = s;
             gDefense = d;
             isAlive = true;
+            specialMeter = 0;
+            if (specialMeter > 100)
+            {
+                specialMeter = 100;
+            }
+        }
+
+        // check if player is dead
+        public override void playerDead()
+        {
+            if (isAlive == true) isAlive = false;
         }
 
         public override int Attack(/*Enemy target*/)
         {
-            int attackDamage;
+            gAttack = 0;
             Random rng = new Random();
             int chance = rng.Next(101);
 
-            if (chance >= 0 && chance < 26)
+            if (chance >= 0 && chance < 25)
             {
-                attackDamage = 0;
+                gAttack = 10;
             }
-            else if (chance >= 26 && chance < 46)
+            else if (chance >= 26 && chance < 45)
             {
-                attackDamage = (int)(gAttack / 5.0);
+                gAttack = 10;
             }
-            else if (chance >= 46 && chance < 66)
+            else if (chance >= 46 && chance < 65)
             {
-                attackDamage = (int)(gAttack / 2.5);
+                gAttack = 20;
             }
-            else if (chance >= 66 && chance < 86)
+            else if (chance >= 66 && chance < 85)
             {
-                attackDamage = (int)(gAttack / 1.25);
+                gAttack = 30;
             }
             else
             {
-                attackDamage = gAttack;
+                gAttack = 30;
             }
 
-            return attackDamage;
+            return gAttack;
         }
 
-        public override void Draw(SpriteBatch sbatch)
-        {
-            
-        }
-        /* public override void ChangeHealth(int amount)
+        public override void ChangeHealth(int amount)
         {
             gHealth = gHealth - amount;
 
@@ -77,6 +79,15 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 gHealth = 0;
             }
-        }*/
+        }
+
+        public void GeekSpecialAttack()
+        {
+            if (specialMeter == 100)
+            {
+                gAttack += 50;
+            }
+        }
+
     }
 }

@@ -121,9 +121,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         Vector2 returnBPosition;
 
         // Make the character variables to test combat
-        Cheerleader cheer = new Cheerleader(100, 10, 10, 10, true);
-        Geek nerd = new Geek(200, 20, 20, 20, true);
-        Jock football = new Jock(150, 20, 15, 15, true);
+        Cheerleader cheer = new Cheerleader(1000, 10, 10, 10, true);
+        Geek nerd = new Geek(1000, 20, 20, 20, true);
+        Jock football = new Jock(1000, 20, 15, 15, true);
 
         // All of the int stat values that will be set by the files
         // Enemies for round 1
@@ -314,11 +314,20 @@ namespace TheAnomalousYouthSquad_Game_try_1
         EarthSprite Earth;
         int msPerFrame;
 
+        // Idle Sprites
+        NerdIdleSprite IdleNerd;
+        CheerIdleSprite IdleCheer;
+        JockIdleSprite IdleJock;
+        EnemyIdleSprite IdleEnemy;
+        BossIdleSprite IdleBoss;
+
+
+
+
         // Music for Game
         private Song GameTitleMusic;
         private Song GameCombatMusic;
         private Song GameLoadScreenMusic;
-
 
 
         int TitleMusicCounter = 960;
@@ -520,7 +529,28 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
             // Loading in the EarthSprite
             Texture2D EarthPic = Content.Load<Texture2D>("Earth for game");
-            Earth = new EarthSprite(EarthPic, new Point(213, 160), 13, 4, 4, 100);
+            Earth = new EarthSprite(EarthPic, new Point(214, 160), 13, 4, 4, 100);
+
+            // Doing the animation for all the Idle charcters
+            // Nerd Idle
+            Texture2D newNerd = Content.Load<Texture2D>("game stuff irwin idle");
+            IdleNerd = new NerdIdleSprite(newNerd, new Point(320, 770), 2, 1, 2, 550);
+
+            // Jock Idle
+            Texture2D newJock = Content.Load<Texture2D>("game stuff biff idle");
+            IdleJock = new JockIdleSprite(newJock, new Point(305, 860), 2, 1, 2, 550);
+
+            // Cheer Idle
+            Texture2D newCheer = Content.Load<Texture2D>("game stuff brit idle");
+            IdleCheer = new CheerIdleSprite(newCheer, new Point(448, 865), 2, 1, 2, 550);
+
+            // Enemy Idle
+            Texture2D newEnemy = Content.Load<Texture2D>("game stuff alien idle");
+            IdleEnemy = new EnemyIdleSprite(newEnemy, new Point(800, 1013), 2, 1, 2, 150);
+
+            // Boss Idle
+            Texture2D newBoss = Content.Load<Texture2D>("game stuff boss idle");
+            IdleBoss = new BossIdleSprite(newBoss, new Point(1000, 1218), 2, 1, 2, 150);
 
             // Load in Music
             GameTitleMusic = Content.Load<Song>("Game TitleScreen Music.wav");
@@ -714,6 +744,10 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 MediaPlayer.Play(GameTitleMusic);
                 CombatMusicCouter = 1965;
             }*/
+
+            IdleNerd.Update(gameTime);
+            IdleJock.Update(gameTime);
+            IdleCheer.Update(gameTime);
 
             // Switch statement for round1 turns
             if (round == 1)
@@ -966,22 +1000,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     }
 
                     cheer.CHealth += 30;
-                    nerd.GHealth += 30;
-                    football.JHealth += 30;
+                    //nerd.GHealth += 30;
+                    //football.JHealth += 30;
 
 
-                    if (cheer.CHealth > 100)
+                    /*if (cheer.CHealth > 100)
                     {
                         cheer.CHealth = 100;
-                    }
-                    if (football.JHealth > 120)
+                    }/*
+                    /*if (football.JHealth > 120)
                     {
                         football.JHealth = 120;
-                    }
-                    if (nerd.GHealth > 200)
+                    }*/
+                    /*if (nerd.GHealth > 200)
                     {
                         nerd.GHealth = 200;
-                    }
+                    }*/
 
                     gState = GameStates.LoadScreen;
                 }
@@ -1310,35 +1344,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (e1Round7.EHealth == 0 && e2Round7.EHealth == 0 && bossRound7.EHealth == 0)
                 {
-                    if (cheer.IsAlive == false)
+                    /*if (cheer.IsAlive == false)
                     {
                         cheer.IsAlive = true;
-                    }
-                    if (football.IsAlive == false)
+                    }*/
+                    /*if (football.IsAlive == false)
                     {
                         football.IsAlive = true;
-                    }
+                    }*/
                     if (nerd.IsAlive == false)
                     {
                         nerd.IsAlive = true;
                     }
 
                     cheer.CHealth += 30;
-                    nerd.GHealth += 30;
-                    football.JHealth += 30;
+                    //nerd.GHealth += 30;
+                    //football.JHealth += 30;
 
-                    if (cheer.CHealth > 100)
+                    /*if(cheer.CHealth > 100)
                     {
                         cheer.CHealth = 100;
-                    }
-                    if (football.JHealth > 120)
+                    }*/
+                    /*if(football.JHealth > 120)
                     {
                         football.JHealth = 120;
-                    }
-                    if (nerd.GHealth > 200)
+                    }*/
+                    /*if(nerd.GHealth > 200)
                     {
                         nerd.GHealth = 200;
-                    }
+                    }*/
 
                     gState = GameStates.LoadScreen;
                 }
@@ -1706,7 +1740,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round1.IsAlive == true)
@@ -1721,15 +1756,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
-
                 if (round1State == Round1States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
@@ -1737,10 +1773,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round1State == Round1States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round1.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round1State == Round1States.JockTurn)
                 {
@@ -1749,6 +1793,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round1State == Round1States.CheerTurn)
                 {
@@ -1757,10 +1809,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round1State == Round1States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round1.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -1772,7 +1832,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round2.IsAlive == true)
@@ -1787,12 +1848,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
 
@@ -1803,10 +1866,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round2State == Round2States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round2.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round2State == Round2States.JockTurn)
                 {
@@ -1815,6 +1886,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round2State == Round2States.CheertTurn)
                 {
@@ -1823,10 +1902,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round2State == Round2States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round2.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -1838,7 +1925,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round3.IsAlive == true)
@@ -1853,12 +1941,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (bossRound3.IsAlive == true)
@@ -1874,10 +1964,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round3State == Round3States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round3.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round3State == Round3States.JockTurn)
                 {
@@ -1886,6 +1984,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round3State == Round3States.CheerTurn)
                 {
@@ -1894,10 +2000,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round3State == Round3States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round3.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                }
+                else if (round3State == Round3States.BossTurn)
+                {
+                    spriteBatch.DrawString(font, "Boss Attacks " + bossRound3.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -1908,7 +2026,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round4.IsAlive == true)
@@ -1923,12 +2042,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
 
@@ -1939,10 +2060,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round4State == Round4States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round4.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round4State == Round4States.JockTurn)
                 {
@@ -1951,6 +2080,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round4State == Round4States.CheerTurn)
                 {
@@ -1959,10 +2096,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round4State == Round4States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round4.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -1973,7 +2118,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round5.IsAlive == true)
@@ -1988,12 +2134,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
 
@@ -2004,10 +2152,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round5State == Round5States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round5.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round5State == Round5States.JockTurn)
                 {
@@ -2016,6 +2172,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round5State == Round5States.CheerTurn)
                 {
@@ -2024,10 +2188,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round5State == Round5States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round5.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -2038,7 +2210,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round6.IsAlive == true)
@@ -2053,12 +2226,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (e3Round6.IsAlive == true)
@@ -2074,10 +2249,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round6State == Round6States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round6.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round6State == Round6States.JockTurn)
                 {
@@ -2086,6 +2269,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round6State == Round6States.CheerTurn)
                 {
@@ -2094,10 +2285,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round6State == Round6States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round6.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -2108,7 +2307,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round7.IsAlive == true)
@@ -2123,12 +2323,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (bossRound7.IsAlive == true)
@@ -2144,10 +2346,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round7State == Round7States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn 1", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round7.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round7State == Round7States.JockTurn)
                 {
@@ -2156,6 +2366,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round7State == Round7States.CheerTurn)
                 {
@@ -2164,10 +2382,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round7State == Round7States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn 2", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round7.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                }
+                else if (round7State == Round7States.BossTurn)
+                {
+                    spriteBatch.DrawString(font, "Boss Attacks " + bossRound7.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -2177,7 +2407,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round8.IsAlive == true)
@@ -2192,12 +2423,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (e3Round8.IsAlive == true)
@@ -2213,10 +2446,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round8State == Round8States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round8.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round8State == Round8States.JockTurn)
                 {
@@ -2225,6 +2466,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round8State == Round8States.CheerTurn)
                 {
@@ -2233,10 +2482,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round8State == Round8States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round8.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                }
+                else if (round8State == Round8States.Enemy3Turn)
+                {
+                    spriteBatch.DrawString(font, "Enemy3 Attacks " + e3Round8.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -2246,7 +2507,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round9.IsAlive == true)
@@ -2261,12 +2523,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (e3Round9.IsAlive == true)
@@ -2282,10 +2546,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round9State == Round9States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round8.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round9State == Round9States.JockTurn)
                 {
@@ -2294,6 +2566,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round9State == Round9States.CheerTurn)
                 {
@@ -2302,10 +2582,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round9State == Round9States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round9.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                }
+                else if (round9State == Round9States.Enemy3Turn)
+                {
+                    spriteBatch.DrawString(font, "Enemy3 Attacks " + e3Round9.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
 
@@ -2315,7 +2607,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
                 if (nerd.IsAlive == true)
                 {
-                    spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    //spriteBatch.Draw(geek, new Rectangle((int)positionGeek.X, (int)positionGeek.Y, 500, 375), Color.White);
+                    IdleNerd.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Nerd Health: " + nerd.GHealth, new Vector2(510, 750), Color.Black);
                 }
                 if (e1Round10.IsAlive == true)
@@ -2330,12 +2623,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
                 if (football.IsAlive == true)
                 {
-                    spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    //spriteBatch.Draw(jock, new Rectangle((int)positionJock.X, (int)positionJock.Y, 290, 400), Color.White);
+                    IdleJock.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "Jock Health: " + football.JHealth, new Vector2(270, 750), Color.Black);
                 }
                 if (cheer.IsAlive == true)
                 {
-                    spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    //spriteBatch.Draw(cheerLeader, new Rectangle((int)positionCheerLeader.X, (int)positionCheerLeader.Y, 270, 350), Color.White);
+                    IdleCheer.Draw(gameTime, spriteBatch);
                     spriteBatch.DrawString(font, "CheerLeader Health: " + cheer.CHealth, new Vector2(0, 750), Color.Black);
                 }
                 if (bossFinal.IsAlive == true)
@@ -2351,10 +2646,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "30%", new Vector2(1270, 948), Color.Black);
+                    if (nerd.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round10State == Round10States.EnemyTurn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy Attacks " + e1Round10.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
                 else if (round10State == Round10States.JockTurn)
                 {
@@ -2363,6 +2666,14 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "20%", new Vector2(1270, 948), Color.Black);
+                    if (football.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round10State == Round10States.CheerTurn)
                 {
@@ -2371,10 +2682,22 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(690, 948), Color.Black);
                     spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(1270, 848), Color.Black);
                     spriteBatch.DrawString(font, "10%", new Vector2(1270, 948), Color.Black);
+                    if (cheer.SpecialMeter < 100)
+                    {
+                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
+                    else
+                    {
+                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    }
                 }
                 else if (round10State == Round10States.Enemy2Turn)
                 {
-                    spriteBatch.DrawString(font, "Enemy Turn", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Enemy2 Attacks " + e2Round10.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
+                }
+                else if (round10State == Round10States.BossTurn)
+                {
+                    spriteBatch.DrawString(font, "Boss Attacks " + e2Round10.EAttack + " Damage was dealt", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
                 }
             }
             spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);
@@ -2861,7 +3184,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
 
                 Thread.Sleep(3000);
-                round1State = Round1States.CheerTurn;
+                round1State = Round1States.NerdTurn;
             }
 
             if (round == 2)
@@ -3464,6 +3787,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             //Button click for attacking
             if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
             {
+                nerd.SpecialMeter += 10;
+
                 if (round == 1)
                 {
                     Random rng = new Random();
@@ -3799,6 +4124,15 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
             }
 
+            if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 910 && mState.Y < 995 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                if (nerd.SpecialMeter >= 100)
+                {
+                    nerd.GAttack += 10;
+                    nerd.SpecialMeter = 0;
+                }
+            }
+
         }
 
         protected void JockCombat()
@@ -3806,6 +4140,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             //Button click for attacking
             if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
             {
+                football.SpecialMeter += 20;
+
                 if (round == 1)
                 {
                     Random rng = new Random();
@@ -4141,6 +4477,29 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
             }
 
+            if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 910 && mState.Y < 995 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                if (football.SpecialMeter >= 100)
+                {
+                    nerd.GHealth += 50;
+                    cheer.CHealth += 50;
+                    football.JHealth += 50;
+
+                    if (nerd.GHealth > 200)
+                    {
+                        nerd.GHealth = 200;
+                    }
+                    if (cheer.CHealth > 100)
+                    {
+                        cheer.CHealth = 100;
+                    }
+                    if (football.JHealth > 120)
+                    {
+                        football.JHealth = 120;
+                    }
+                    football.SpecialMeter = 0;
+                }
+            }
         }
 
         protected void CheerCombat()
@@ -4148,6 +4507,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             //Button click for attacking
             if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
             {
+                cheer.SpecialMeter += 15;
+
                 if (round == 1)
                 {
                     Random rng = new Random();
@@ -4483,38 +4844,285 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 }
             }
 
-            //Button click for switching character focus
-            /* if (mState.X >= 91 && mState.X <= 160 && mState.Y >= 850 && mState.Y < 920 && mState.LeftButton == ButtonState.Pressed)
-             {
-                 switching = true;
-                 attacking = false;
-             }*/
-        }
+            if (mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 910 && mState.Y < 995 && mState.LeftButton == ButtonState.Pressed && LastmState.LeftButton != mState.LeftButton)
+            {
+                if (cheer.SpecialMeter >= 100)
+                {
+                    if (round == 1)
+                    {
+                        int attack = cheer.Attack();
 
-        protected void BattleStateClicks()
-        {
-            if (round1State == Round1States.NerdTurn && mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed)
-            {
-                round1State = Round1States.EnemyTurn;
+                        e1Round1.EHealth = e1Round1.EHealth - attack;
+
+                        e2Round1.EHealth = e2Round1.EHealth - attack;
+
+                        if (e1Round1.EHealth <= 0)
+                        {
+                            e1Round1.EHealth = 0;
+                            e1Round1.IsAlive = false;
+                        }
+                        if (e2Round1.EHealth <= 0)
+                        {
+                            e2Round1.EHealth = 0;
+                            e2Round1.IsAlive = false;
+                        };
+
+                        cheer.SpecialMeter = 0;
+                        round1State = Round1States.Enemy2Turn;
+                    }
+
+                    if (round == 2)
+                    {
+
+                        int attack = cheer.Attack();
+
+                        e1Round2.EHealth = e1Round2.EHealth - attack;
+
+                        e2Round2.EHealth = e2Round2.EHealth - attack;
+
+                        if (e1Round2.EHealth <= 0)
+                        {
+                            e1Round2.EHealth = 0;
+                            e1Round2.IsAlive = false;
+                        }
+                        if (e2Round2.EHealth <= 0)
+                        {
+                            e2Round2.EHealth = 0;
+                            e2Round2.IsAlive = false;
+                        };
+
+                        cheer.SpecialMeter = 0;
+                        round2State = Round2States.EnemyTurn;
+                    }
+
+                    if (round == 3)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round3.EHealth = e1Round3.EHealth - attack;
+
+                        e2Round3.EHealth = e2Round3.EHealth - attack;
+
+                        bossRound3.EHealth = bossRound3.EHealth - attack;
+
+                        if (e1Round3.EHealth <= 0)
+                        {
+                            e1Round3.EHealth = 0;
+                            e1Round3.IsAlive = false;
+                        }
+                        if (e2Round3.EHealth <= 0)
+                        {
+                            e2Round3.EHealth = 0;
+                            e2Round3.IsAlive = false;
+                        }
+                        if (bossRound3.EHealth <= 0)
+                        {
+                            bossRound3.EHealth = 0;
+                            bossRound3.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round3State = Round3States.NerdTurn;
+                    }
+
+                    if (round == 4)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round4.EHealth = e1Round4.EHealth - attack;
+
+                        e2Round4.EHealth = e2Round4.EHealth - attack;
+
+                        if (e1Round4.EHealth <= 0)
+                        {
+                            e1Round4.EHealth = 0;
+                            e1Round4.IsAlive = false;
+                        }
+                        if (e2Round4.EHealth <= 0)
+                        {
+                            e2Round4.EHealth = 0;
+                            e2Round4.IsAlive = false;
+                        };
+
+                        cheer.SpecialMeter = 0;
+                        round4State = Round4States.EnemyTurn;
+                    }
+
+                    if (round == 5)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round5.EHealth = e1Round5.EHealth - attack;
+
+                        e2Round5.EHealth = e2Round5.EHealth - attack;
+
+                        if (e1Round5.EHealth <= 0)
+                        {
+                            e1Round5.EHealth = 0;
+                            e1Round5.IsAlive = false;
+                        }
+                        if (e2Round5.EHealth <= 0)
+                        {
+                            e2Round5.EHealth = 0;
+                            e2Round5.IsAlive = false;
+                        };
+
+                        cheer.SpecialMeter = 0;
+                        round5State = Round5States.NerdTurn;
+                    }
+
+                    if (round == 6)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round6.EHealth = e1Round6.EHealth - attack;
+
+                        e2Round6.EHealth = e2Round6.EHealth - attack;
+
+                        e3Round6.EHealth = e3Round6.EHealth - attack;
+
+                        if (e1Round6.EHealth <= 0)
+                        {
+                            e1Round6.EHealth = 0;
+                            e1Round6.IsAlive = false;
+                        }
+                        if (e2Round6.EHealth <= 0)
+                        {
+                            e2Round6.EHealth = 0;
+                            e2Round6.IsAlive = false;
+                        }
+                        if (e3Round6.EHealth <= 0)
+                        {
+                            e3Round6.EHealth = 0;
+                            e3Round6.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round6State = Round6States.EnemyTurn;
+                    }
+
+                    if (round == 7)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round7.EHealth = e1Round7.EHealth - attack;
+
+                        e2Round7.EHealth = e2Round7.EHealth - attack;
+
+                        bossRound7.EHealth = bossRound7.EHealth - attack;
+
+                        if (e1Round7.EHealth <= 0)
+                        {
+                            e1Round7.EHealth = 0;
+                            e1Round7.IsAlive = false;
+                        }
+                        if (e2Round7.EHealth <= 0)
+                        {
+                            e2Round7.EHealth = 0;
+                            e2Round7.IsAlive = false;
+                        }
+                        if (bossRound7.EHealth <= 0)
+                        {
+                            bossRound7.EHealth = 0;
+                            bossRound7.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round7State = Round7States.NerdTurn;
+                    }
+
+                    if (round == 8)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round8.EHealth = e1Round8.EHealth - attack;
+
+                        e2Round8.EHealth = e2Round8.EHealth - attack;
+
+                        e3Round8.EHealth = e3Round8.EHealth - attack;
+
+                        if (e1Round8.EHealth <= 0)
+                        {
+                            e1Round8.EHealth = 0;
+                            e1Round8.IsAlive = false;
+                        }
+                        if (e2Round8.EHealth <= 0)
+                        {
+                            e2Round8.EHealth = 0;
+                            e2Round8.IsAlive = false;
+                        }
+                        if (e3Round8.EHealth <= 0)
+                        {
+                            e3Round8.EHealth = 0;
+                            e3Round8.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round8State = Round8States.JockTurn;
+                    }
+
+                    if (round == 9)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round9.EHealth = e1Round9.EHealth - attack;
+
+                        e2Round9.EHealth = e2Round9.EHealth - attack;
+
+                        e3Round9.EHealth = e3Round9.EHealth - attack;
+
+                        if (e1Round9.EHealth <= 0)
+                        {
+                            e1Round9.EHealth = 0;
+                            e1Round9.IsAlive = false;
+                        }
+                        if (e2Round9.EHealth <= 0)
+                        {
+                            e2Round9.EHealth = 0;
+                            e2Round9.IsAlive = false;
+                        }
+                        if (e3Round9.EHealth <= 0)
+                        {
+                            e3Round9.EHealth = 0;
+                            e3Round9.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round9State = Round9States.Enemy2Turn;
+                    }
+
+                    if (round == 10)
+                    {
+                        int attack = cheer.Attack();
+
+                        e1Round10.EHealth = e1Round10.EHealth - attack;
+
+                        e2Round10.EHealth = e2Round10.EHealth - attack;
+
+                        bossFinal.EHealth = bossFinal.EHealth - attack;
+
+                        if (e1Round10.EHealth <= 0)
+                        {
+                            e1Round10.EHealth = 0;
+                            e1Round10.IsAlive = false;
+                        }
+                        if (e2Round10.EHealth <= 0)
+                        {
+                            e2Round10.EHealth = 0;
+                            e2Round10.IsAlive = false;
+                        }
+                        if (bossFinal.EHealth <= 0)
+                        {
+                            bossFinal.EHealth = 0;
+                            bossFinal.IsAlive = false;
+                        }
+
+                        cheer.SpecialMeter = 0;
+                        round10State = Round10States.EnemyTurn;
+                    }
+                }
             }
-            if (round1State == Round1States.EnemyTurn)
-            {
-                Thread.Sleep(3000);
-                round1State = Round1States.JockTurn;
-            }
-            if (round1State == Round1States.JockTurn && mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed)
-            {
-                round1State = Round1States.CheerTurn;
-            }
-            if (round1State == Round1States.CheerTurn && mState.X >= 1545 && mState.X <= 1845 && mState.Y >= 815 && mState.Y < 900 && mState.LeftButton == ButtonState.Pressed)
-            {
-                round1State = Round1States.Enemy2Turn;
-            }
-            if (round1State == Round1States.Enemy2Turn)
-            {
-                Thread.Sleep(3000);
-                round1State = Round1States.NerdTurn;
-            }
+
         }
 
         protected void FileLoader()

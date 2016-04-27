@@ -38,13 +38,18 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BossIdleSprite.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="CheerIdleSprite.cs" />
     <Compile Include="Cheerleader.cs" />
     <Compile Include="EarthSprite.cs" />
     <Compile Include="Enemy.cs" />
+    <Compile Include="EnemyIdleSprite.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Geek.cs" />
     <Compile Include="Jock.cs" />
+    <Compile Include="JockIdleSprite.cs" />
+    <Compile Include="NerdIdleSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -201,6 +206,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Earth for game.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\game stuff alien idle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\game stuff biff idle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\game stuff boss idle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\game stuff brit idle.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\game stuff irwin idle.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

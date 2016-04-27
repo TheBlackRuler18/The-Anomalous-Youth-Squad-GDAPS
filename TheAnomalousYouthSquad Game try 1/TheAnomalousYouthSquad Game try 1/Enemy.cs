@@ -4,9 +4,6 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
-using Microsoft.Xna.Framework.Audio;
 
 namespace TheAnomalousYouthSquad_Game_try_1
 {
@@ -17,7 +14,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private int eDefense;
         private int eSpeed;
         private bool isAlive;
-        private Rectangle eRect;
 
         public int EHealth { get { return eHealth; } set { eHealth = value; } }
         public int EAttack { get { return eAttack; } }
@@ -28,10 +24,16 @@ namespace TheAnomalousYouthSquad_Game_try_1
         public Enemy(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
         {
             eHealth = h;
-            eSpeed = s;
             eAttack = a;
+            eSpeed = s;
             eDefense = d;
             isAlive = true;
+        }
+
+        // check if enemy is dead
+        public override void playerDead()
+        {
+            if (isAlive == true) isAlive = false;
         }
 
         // attack method
@@ -65,12 +67,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
             return eAttack;
         }
 
-        public override void Draw(SpriteBatch sbatch)
-        {
-            
-        }
-
-        /* public override void ChangeHealth(int amount)
+        public override void ChangeHealth(int amount)
         {
             eHealth = eHealth - amount;
 
@@ -78,6 +75,8 @@ namespace TheAnomalousYouthSquad_Game_try_1
             {
                 eHealth = 0;
             }
-        } */
+        }
+
     }
 }
+
