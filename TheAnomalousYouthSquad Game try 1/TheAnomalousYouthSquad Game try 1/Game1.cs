@@ -321,7 +321,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
         EnemyIdleSprite IdleEnemy;
         BossIdleSprite IdleBoss;
 
-
+        // Textures and Vectors for Credits and Instructions screen
+        Texture2D creditImg;
+        Vector2 creditV;
 
 
         // Music for Game
@@ -413,6 +415,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
             geekMenuPosition = new Vector2(0, 800);
             jockMenuPosition = new Vector2(0, 800);
             cheerMenuPosition = new Vector2(0, 800);
+
+            // Credit img
+            creditV = new Vector2(485, 80);
 
             FileLoader();
 
@@ -556,6 +561,9 @@ namespace TheAnomalousYouthSquad_Game_try_1
             GameTitleMusic = Content.Load<Song>("Game TitleScreen Music.wav");
             GameCombatMusic = Content.Load<Song>("Game Combat music.wav");
             GameLoadScreenMusic = Content.Load<Song>("Game LoadScreen Music1.wav");
+
+            // Credit Img
+            creditImg = Content.Load<Texture2D>("TAYSCredits");
 
             MediaPlayer.IsRepeating = true;
         }
@@ -1717,16 +1725,18 @@ namespace TheAnomalousYouthSquad_Game_try_1
         protected void DrawCredits(GameTime gameTime)
         {
             spriteBatch.Begin();
-            GraphicsDevice.Clear(Color.Pink);
+            GraphicsDevice.Clear(Color.Black);
             spriteBatch.Draw(returnButton, returnBPosition, Color.White);
 
             // Writing the credits to the screen
-            spriteBatch.DrawString(font, "This is a game was made over the course of our spring semester at Rochester Institute of Technology", new Vector2(GraphicsDevice.Viewport.Width / 3, 20), Color.Black);
+            spriteBatch.Draw(creditImg, creditV, Color.White);
+
+            /* spriteBatch.DrawString(font, "This is a game was made over the course of our spring semester at Rochester Institute of Technology", new Vector2(GraphicsDevice.Viewport.Width / 3, 20), Color.Black);
             spriteBatch.DrawString(font, "The roles for the project include:", new Vector2(GraphicsDevice.Viewport.Width / 3, 40), Color.Black);
             spriteBatch.DrawString(font, "Project Lead: Herman McElveen", new Vector2(GraphicsDevice.Viewport.Width / 3, 60), Color.Black);
             spriteBatch.DrawString(font, "Project Architect: Ryan Lowrie", new Vector2(GraphicsDevice.Viewport.Width / 3, 80), Color.Black);
             spriteBatch.DrawString(font, "Project Design: Tung Nguyen", new Vector2(GraphicsDevice.Viewport.Width / 3, 100), Color.Black);
-            spriteBatch.DrawString(font, "Project Interface: Yoon Kim", new Vector2(GraphicsDevice.Viewport.Width / 3, 120), Color.Black);
+            spriteBatch.DrawString(font, "Project Interface: Yoon Kim", new Vector2(GraphicsDevice.Viewport.Width / 3, 120), Color.Black); */
             spriteBatch.End();
         }
 
