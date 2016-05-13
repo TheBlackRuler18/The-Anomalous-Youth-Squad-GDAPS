@@ -59,7 +59,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         break;
 
                     case 1:
-                        currentFrame.X = 850;
+                        currentFrame.X = 970;
                         currentFrame.Y = 0;
                         break;
                 }
@@ -68,7 +68,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(picture, new Rectangle(positions.X, positions.Y, positions.Width, positions.Height), new Rectangle(currentFrame.X, currentFrame.Y
+            spriteBatch.Draw(picture, new Rectangle(900, 270, 600, 475), new Rectangle(currentFrame.X, currentFrame.Y
+                , frameSize.X, frameSize.Y), Color.White,
+                0,
+                Vector2.Zero,
+                SpriteEffects.None,
+               1);
+        }
+
+        public void DrawMini(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(picture, new Rectangle(900, 475, 250, 275), new Rectangle(currentFrame.X, currentFrame.Y
+                , frameSize.X, frameSize.Y), Color.White,
+                0,
+                Vector2.Zero,
+                SpriteEffects.None,
+               1);
+        }
+
+        public void DrawTall(GameTime gameTime, SpriteBatch spriteBatch)
+        {
+            spriteBatch.Draw(picture, new Rectangle(950, 150, 350, 600), new Rectangle(currentFrame.X, currentFrame.Y
                 , frameSize.X, frameSize.Y), Color.White,
                 0,
                 Vector2.Zero,

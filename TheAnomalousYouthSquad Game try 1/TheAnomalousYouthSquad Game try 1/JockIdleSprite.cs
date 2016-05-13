@@ -59,7 +59,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
                         break;
 
                     case 1:
-                        currentFrame.X = 305;
+                        currentFrame.X = 365;
                         currentFrame.Y = 0;
                         break;
                 }
@@ -77,4 +77,3 @@ namespace TheAnomalousYouthSquad_Game_try_1
         }
     }
 }
-

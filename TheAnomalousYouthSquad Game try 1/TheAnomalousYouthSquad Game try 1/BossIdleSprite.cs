@@ -10,7 +10,6 @@ namespace TheAnomalousYouthSquad_Game_try_1
 {
     class BossIdleSprite
     {
-
         private Texture2D picture;
         private int frame;
         private Point frameSize;
@@ -69,7 +68,7 @@ namespace TheAnomalousYouthSquad_Game_try_1
 
         public void Draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(picture, new Rectangle(positions.X, positions.Y, positions.Width, positions.Height), new Rectangle(currentFrame.X, currentFrame.Y
+            spriteBatch.Draw(picture, new Rectangle(1350, 200, 600, 550), new Rectangle(currentFrame.X, currentFrame.Y
                 , frameSize.X, frameSize.Y), Color.White,
                 0,
                 Vector2.Zero,
@@ -78,4 +77,3 @@ namespace TheAnomalousYouthSquad_Game_try_1
         }
     }
 }
-

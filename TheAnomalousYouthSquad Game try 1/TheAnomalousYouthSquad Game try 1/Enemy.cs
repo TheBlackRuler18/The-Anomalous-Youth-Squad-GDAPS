@@ -49,19 +49,19 @@ namespace TheAnomalousYouthSquad_Game_try_1
             }
             else if (chance >= 26 && chance < 45)
             {
-                eAttack = 5;
+                eAttack = eAttack -5;
             }
             else if (chance >= 46 && chance < 65)
             {
-                eAttack = 10;
+                eAttack = eAttack += 0;
             }
             else if (chance >= 66 && chance < 85)
             {
-                eAttack = 15;
+                eAttack = eAttack += 5;
             }
             else
             {
-                eAttack = 30;
+                eAttack = eAttack += 15;
             }
 
             return eAttack;
