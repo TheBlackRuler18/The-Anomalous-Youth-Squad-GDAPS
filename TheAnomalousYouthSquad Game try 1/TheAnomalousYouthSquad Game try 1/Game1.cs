@@ -3675,17 +3675,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round1.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round1.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if(football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round1.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3714,17 +3723,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round2.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if(nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round2.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round2.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3752,17 +3771,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round3.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round3.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round3.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3791,17 +3820,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round4.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round4.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round4.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3830,17 +3868,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round5.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round5.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round5.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3869,17 +3917,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round6.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round6.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round6.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3908,17 +3966,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round7.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round7.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round7.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3947,17 +4015,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round8.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round8.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round8.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -3986,17 +4064,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round9.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round9.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round9.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4025,17 +4113,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e1Round10.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e1Round10.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e1Round10.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4070,17 +4167,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round1.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round1.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round1.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4109,17 +4216,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round2.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round2.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round2.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4147,17 +4264,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round3.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round3.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round3.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4186,17 +4313,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round4.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round4.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round4.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4225,17 +4362,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round5.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round5.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round5.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4264,17 +4411,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round6.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round6.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round6.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4303,17 +4460,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round7.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round7.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round7.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4342,17 +4509,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round8.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round8.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round8.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4381,17 +4558,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round9.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round9.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round9.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4420,17 +4607,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e2Round10.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e2Round10.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e2Round10.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4465,17 +4662,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e3Round6.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e3Round6.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e3Round6.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4504,17 +4711,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e3Round8.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e3Round8.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e3Round8.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4542,17 +4759,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = e3Round9.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = e3Round9.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = e3Round9.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4587,17 +4814,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = bossRound3.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = bossRound3.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = bossRound3.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4626,17 +4863,27 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = bossRound7.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = bossRound7.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = bossRound7.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4664,17 +4911,26 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (num >= 0 && num <= 40)
                 {
                     int attack = bossFinal.Attack();
-                    nerd.GHealth = nerd.GHealth - attack;
+                    if (nerd.GDefense <= attack)
+                    {
+                        nerd.GHealth = nerd.GHealth - attack + nerd.GDefense;
+                    }
                 }
                 else if (num >= 41 && num < 80)
                 {
                     int attack = bossFinal.Attack();
-                    football.JHealth = football.JHealth - attack;
+                    if (football.JDefense <= attack)
+                    {
+                        football.JHealth = football.JHealth - attack + football.JDefense;
+                    }
                 }
                 else
                 {
                     int attack = bossFinal.Attack();
-                    cheer.CHealth = cheer.CHealth - attack;
+                    if (cheer.CDefense <= attack)
+                    {
+                        cheer.CHealth = cheer.CHealth - attack + cheer.CDefense;
+                    }
                 }
 
                 if (nerd.GHealth <= 0)
@@ -4713,11 +4969,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round1.EHealth = e1Round1.EHealth - attack;
+                        if (e1Round1.EDefense <= attack)
+                        {
+                            e1Round1.EHealth = e1Round1.EHealth - attack + e1Round1.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round1.EHealth = e2Round1.EHealth - attack;
+                        if (e2Round1.EDefense <= attack)
+                        {
+                            e2Round1.EHealth = e2Round1.EHealth - attack + e2Round1.EDefense;
+                        }
                     }
                     if (e1Round1.EHealth <= 0)
                     {
@@ -4741,11 +5003,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round2.EHealth = e1Round2.EHealth - attack;
+                        if (e1Round2.EDefense <= attack)
+                        {
+                            e1Round2.EHealth = e1Round2.EHealth - attack + e1Round2.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round2.EHealth = e2Round2.EHealth - attack;
+                        if (e2Round2.EDefense <= attack)
+                        {
+                            e2Round2.EHealth = e2Round2.EHealth - attack + e2Round2.EDefense;
+                        }
                     }
                     if (e1Round2.EHealth <= 0)
                     {
@@ -4769,15 +5037,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round3.EHealth = e1Round3.EHealth - attack;
+                        if (e1Round3.EDefense <= attack)
+                        {
+                            e1Round3.EHealth = e1Round3.EHealth - attack + e1Round3.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round3.EHealth = e2Round3.EHealth - attack;
+                        if (e2Round3.EDefense <= attack)
+                        {
+                            e2Round3.EHealth = e2Round3.EHealth - attack + e2Round3.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound3.EHealth = bossRound3.EHealth - attack;
+                        if (bossRound3.EDefense <= attack)
+                        {
+                            bossRound3.EHealth = bossRound3.EHealth - attack + bossRound3.EDefense;
+                        }
                     }
                     if (e1Round3.EHealth <= 0)
                     {
@@ -4806,11 +5083,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round4.EHealth = e1Round4.EHealth - attack;
+                        if (e1Round4.EDefense <= attack)
+                        {
+                            e1Round4.EHealth = e1Round4.EHealth - attack + e1Round4.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round4.EHealth = e2Round4.EHealth - attack;
+                        if (e2Round4.EDefense <= attack)
+                        {
+                            e2Round4.EHealth = e2Round4.EHealth - attack + e2Round4.EDefense;
+                        }
                     }
                     if (e1Round4.EHealth <= 0)
                     {
@@ -4834,11 +5117,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round5.EHealth = e1Round5.EHealth - attack;
+                        if (e1Round5.EDefense <= attack)
+                        {
+                            e1Round5.EHealth = e1Round5.EHealth - attack + e1Round5.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round5.EHealth = e2Round5.EHealth - attack;
+                        if (e2Round5.EDefense <= attack)
+                        {
+                            e2Round5.EHealth = e2Round5.EHealth - attack + e2Round5.EDefense;
+                        }
                     }
                     if (e1Round5.EHealth <= 0)
                     {
@@ -4862,15 +5151,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round6.EHealth = e1Round6.EHealth - attack;
+                        if (e1Round6.EDefense <= attack)
+                        {
+                            e1Round6.EHealth = e1Round6.EHealth - attack + e1Round6.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round6.EHealth = e2Round6.EHealth - attack;
+                        if (e2Round6.EDefense <= attack)
+                        {
+                            e2Round6.EHealth = e2Round6.EHealth - attack + e2Round6.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round6.EHealth = e3Round6.EHealth - attack;
+                        if (e3Round6.EDefense <= attack)
+                        {
+                            e3Round6.EHealth = e3Round6.EHealth - attack + e3Round6.EDefense;
+                        }
                     }
                     if (e1Round6.EHealth <= 0)
                     {
@@ -4899,15 +5197,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round7.EHealth = e1Round7.EHealth - attack;
+                        if (e1Round7.EDefense <= attack)
+                        {
+                            e1Round7.EHealth = e1Round7.EHealth - attack + e1Round7.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round7.EHealth = e2Round7.EHealth - attack;
+                        if (e2Round7.EDefense <= attack)
+                        {
+                            e2Round7.EHealth = e2Round7.EHealth - attack + e2Round7.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound7.EHealth = bossRound7.EHealth - attack;
+                        if (bossRound7.EDefense <= attack)
+                        {
+                            bossRound7.EHealth = bossRound7.EHealth - attack + bossRound7.EDefense;
+                        }
                     }
                     if (e1Round7.EHealth <= 0)
                     {
@@ -4936,15 +5243,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round8.EHealth = e1Round8.EHealth - attack;
+                        if (e1Round8.EDefense <= attack)
+                        {
+                            e1Round8.EHealth = e1Round8.EHealth - attack + e1Round8.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round8.EHealth = e2Round8.EHealth - attack;
+                        if (e2Round8.EDefense <= attack)
+                        {
+                            e2Round8.EHealth = e2Round8.EHealth - attack + e2Round8.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round8.EHealth = e3Round8.EHealth - attack;
+                        if (e3Round8.EDefense <= attack)
+                        {
+                            e3Round8.EHealth = e3Round8.EHealth - attack + e3Round8.EDefense;
+                        }
                     }
                     if (e1Round8.EHealth <= 0)
                     {
@@ -4973,15 +5289,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round9.EHealth = e1Round9.EHealth - attack;
+                        if (e1Round9.EDefense <= attack)
+                        {
+                            e1Round9.EHealth = e1Round9.EHealth - attack + e1Round9.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round9.EHealth = e2Round9.EHealth - attack;
+                        if (e2Round9.EDefense <= attack)
+                        {
+                            e2Round9.EHealth = e2Round9.EHealth - attack + e2Round9.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round9.EHealth = e3Round9.EHealth - attack;
+                        if (e3Round9.EDefense <= attack)
+                        {
+                            e3Round9.EHealth = e3Round9.EHealth - attack + e3Round9.EDefense;
+                        }
                     }
                     if (e1Round9.EHealth <= 0)
                     {
@@ -5010,15 +5335,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = nerd.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round10.EHealth = e1Round10.EHealth - attack;
+                        if (e1Round10.EDefense <= attack)
+                        {
+                            e1Round10.EHealth = e1Round10.EHealth - attack + e1Round10.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round10.EHealth = e2Round10.EHealth - attack;
+                        if (e2Round10.EDefense <= attack)
+                        {
+                            e2Round10.EHealth = e2Round10.EHealth - attack + e2Round10.EDefense;
+                        }
                     }
                     else
                     {
-                        bossFinal.EHealth = bossFinal.EHealth - attack;
+                        if (bossFinal.EDefense <= attack)
+                        {
+                            bossFinal.EHealth = bossFinal.EHealth - attack + bossFinal.EDefense;
+                        }
                     }
                     if (e1Round10.EHealth <= 0)
                     {
@@ -5066,11 +5400,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round1.EHealth = e1Round1.EHealth - attack;
+                        if(e1Round1.EDefense <= attack)
+                        {
+                            e1Round1.EHealth = e1Round1.EHealth - attack + e1Round1.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round1.EHealth = e2Round1.EHealth - attack;
+                        if (e2Round1.EDefense <= attack)
+                        {
+                            e2Round1.EHealth = e2Round1.EHealth - attack + e2Round1.EDefense;
+                        }
                     }
                     if (e1Round1.EHealth <= 0)
                     {
@@ -5094,11 +5434,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round2.EHealth = e1Round2.EHealth - attack;
+                        if (e1Round2.EDefense <= attack)
+                        {
+                            e1Round2.EHealth = e1Round2.EHealth - attack + e1Round2.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round2.EHealth = e2Round2.EHealth - attack;
+                        if (e2Round2.EDefense <= attack)
+                        {
+                            e2Round2.EHealth = e2Round2.EHealth - attack + e2Round2.EDefense;
+                        }
                     }
                     if (e1Round2.EHealth <= 0)
                     {
@@ -5122,15 +5468,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round3.EHealth = e1Round3.EHealth - attack;
+                        if (e1Round3.EDefense <= attack)
+                        {
+                            e1Round3.EHealth = e1Round3.EHealth - attack + e1Round3.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round3.EHealth = e2Round3.EHealth - attack;
+                        if (e2Round3.EDefense <= attack)
+                        {
+                            e2Round3.EHealth = e2Round3.EHealth - attack + e2Round3.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound3.EHealth = bossRound3.EHealth - attack;
+                        if (bossRound3.EDefense <= attack)
+                        {
+                            bossRound3.EHealth = bossRound3.EHealth - attack + bossRound3.EDefense;
+                        }
                     }
                     if (e1Round3.EHealth <= 0)
                     {
@@ -5159,11 +5514,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round4.EHealth = e1Round4.EHealth - attack;
+                        if (e1Round4.EDefense <= attack)
+                        {
+                            e1Round4.EHealth = e1Round4.EHealth - attack + e1Round4.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round4.EHealth = e2Round4.EHealth - attack;
+                        if (e2Round4.EDefense <= attack)
+                        {
+                            e2Round4.EHealth = e2Round4.EHealth - attack + e2Round4.EDefense;
+                        }
                     }
                     if (e1Round4.EHealth <= 0)
                     {
@@ -5187,11 +5548,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round5.EHealth = e1Round5.EHealth - attack;
+                        if (e1Round5.EDefense <= attack)
+                        {
+                            e1Round5.EHealth = e1Round5.EHealth - attack + e1Round5.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round5.EHealth = e2Round5.EHealth - attack;
+                        if (e2Round5.EDefense <= attack)
+                        {
+                            e2Round5.EHealth = e2Round5.EHealth - attack + e2Round5.EDefense;
+                        }
                     }
                     if (e1Round5.EHealth <= 0)
                     {
@@ -5215,15 +5582,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round6.EHealth = e1Round6.EHealth - attack;
+                        if (e1Round6.EDefense <= attack)
+                        {
+                            e1Round6.EHealth = e1Round6.EHealth - attack + e1Round6.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round6.EHealth = e2Round6.EHealth - attack;
+                        if (e2Round6.EDefense <= attack)
+                        {
+                            e2Round6.EHealth = e2Round6.EHealth - attack + e2Round6.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round6.EHealth = e3Round6.EHealth - attack;
+                        if (e3Round6.EDefense <= attack)
+                        {
+                            e3Round6.EHealth = e3Round6.EHealth - attack + e3Round6.EDefense;
+                        }
                     }
                     if (e1Round6.EHealth <= 0)
                     {
@@ -5252,15 +5628,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round7.EHealth = e1Round7.EHealth - attack;
+                        if (e1Round7.EDefense <= attack)
+                        {
+                            e1Round7.EHealth = e1Round7.EHealth - attack + e1Round7.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round7.EHealth = e2Round7.EHealth - attack;
+                        if (e2Round7.EDefense <= attack)
+                        {
+                            e2Round7.EHealth = e2Round7.EHealth - attack + e2Round7.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound7.EHealth = bossRound7.EHealth - attack;
+                        if (bossRound7.EDefense <= attack)
+                        {
+                            bossRound7.EHealth = bossRound7.EHealth - attack + bossRound7.EDefense;
+                        }
                     }
                     if (e1Round7.EHealth <= 0)
                     {
@@ -5289,15 +5674,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round8.EHealth = e1Round8.EHealth - attack;
+                        if (e1Round8.EDefense <= attack)
+                        {
+                            e1Round8.EHealth = e1Round8.EHealth - attack + e1Round8.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round8.EHealth = e2Round8.EHealth - attack;
+                        if (e2Round8.EDefense <= attack)
+                        {
+                            e2Round8.EHealth = e2Round8.EHealth - attack + e2Round8.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round8.EHealth = e3Round8.EHealth - attack;
+                        if (e3Round8.EDefense <= attack)
+                        {
+                            e3Round8.EHealth = e3Round8.EHealth - attack + e3Round8.EDefense;
+                        }
                     }
                     if (e1Round8.EHealth <= 0)
                     {
@@ -5326,15 +5720,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round9.EHealth = e1Round9.EHealth - attack;
+                        if (e1Round9.EDefense <= attack)
+                        {
+                            e1Round9.EHealth = e1Round9.EHealth - attack + e1Round9.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round9.EHealth = e2Round9.EHealth - attack;
+                        if (e2Round9.EDefense <= attack)
+                        {
+                            e2Round9.EHealth = e2Round9.EHealth - attack + e2Round9.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round9.EHealth = e3Round9.EHealth - attack;
+                        if (e3Round9.EDefense <= attack)
+                        {
+                            e3Round9.EHealth = e3Round9.EHealth - attack + e3Round9.EDefense;
+                        }
                     }
                     if (e1Round9.EHealth <= 0)
                     {
@@ -5363,15 +5766,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = football.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round10.EHealth = e1Round10.EHealth - attack;
+                        if (e1Round10.EDefense <= attack)
+                        {
+                            e1Round10.EHealth = e1Round10.EHealth - attack + e1Round10.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round10.EHealth = e2Round10.EHealth - attack;
+                        if (e2Round10.EDefense <= attack)
+                        {
+                            e2Round10.EHealth = e2Round10.EHealth - attack + e2Round10.EDefense;
+                        }
                     }
                     else
                     {
-                        bossFinal.EHealth = bossFinal.EHealth - attack;
+                        if (bossFinal.EDefense <= attack)
+                        {
+                            bossFinal.EHealth = bossFinal.EHealth - attack + bossFinal.EDefense;
+                        }
                     }
                     if (e1Round10.EHealth <= 0)
                     {
@@ -5433,11 +5845,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round1.EHealth = e1Round1.EHealth - attack;
+                        if (e1Round1.EDefense <= attack)
+                        {
+                            e1Round1.EHealth = e1Round1.EHealth - attack + e1Round1.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round1.EHealth = e2Round1.EHealth - attack;
+                        if (e2Round1.EDefense <= attack)
+                        {
+                            e2Round1.EHealth = e2Round1.EHealth - attack + e2Round1.EDefense;
+                        }
                     }
                     if (e1Round1.EHealth <= 0)
                     {
@@ -5461,11 +5879,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round2.EHealth = e1Round2.EHealth - attack;
+                        if (e1Round2.EDefense <= attack)
+                        {
+                            e1Round2.EHealth = e1Round2.EHealth - attack + e1Round2.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round2.EHealth = e2Round2.EHealth - attack;
+                        if (e2Round2.EDefense <= attack)
+                        {
+                            e2Round2.EHealth = e2Round2.EHealth - attack + e2Round2.EDefense;
+                        }
                     }
                     if (e1Round2.EHealth <= 0)
                     {
@@ -5489,15 +5913,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round3.EHealth = e1Round3.EHealth - attack;
+                        if (e1Round3.EDefense <= attack)
+                        {
+                            e1Round3.EHealth = e1Round3.EHealth - attack + e1Round3.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round3.EHealth = e2Round3.EHealth - attack;
+                        if (e2Round3.EDefense <= attack)
+                        {
+                            e2Round3.EHealth = e2Round3.EHealth - attack + e2Round3.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound3.EHealth = bossRound3.EHealth - attack;
+                        if (bossRound3.EDefense <= attack)
+                        {
+                            bossRound3.EHealth = bossRound3.EHealth - attack + bossRound3.EDefense;
+                        }
                     }
                     if (e1Round3.EHealth <= 0)
                     {
@@ -5526,11 +5959,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round4.EHealth = e1Round4.EHealth - attack;
+                        if (e1Round4.EDefense <= attack)
+                        {
+                            e1Round4.EHealth = e1Round4.EHealth - attack + e1Round4.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round4.EHealth = e2Round4.EHealth - attack;
+                        if (e2Round4.EDefense <= attack)
+                        {
+                            e2Round4.EHealth = e2Round4.EHealth - attack + e2Round4.EDefense;
+                        }
                     }
                     if (e1Round4.EHealth <= 0)
                     {
@@ -5554,11 +5993,17 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num < 50)
                     {
-                        e1Round5.EHealth = e1Round5.EHealth - attack;
+                        if (e1Round5.EDefense <= attack)
+                        {
+                            e1Round5.EHealth = e1Round5.EHealth - attack + e1Round5.EDefense;
+                        }
                     }
                     else
                     {
-                        e2Round5.EHealth = e2Round5.EHealth - attack;
+                        if (e2Round5.EDefense <= attack)
+                        {
+                            e2Round5.EHealth = e2Round5.EHealth - attack + e2Round5.EDefense;
+                        }
                     }
                     if (e1Round5.EHealth <= 0)
                     {
@@ -5582,15 +6027,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round6.EHealth = e1Round6.EHealth - attack;
+                        if (e1Round6.EDefense <= attack)
+                        {
+                            e1Round6.EHealth = e1Round6.EHealth - attack + e1Round6.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round6.EHealth = e2Round6.EHealth - attack;
+                        if (e2Round6.EDefense <= attack)
+                        {
+                            e2Round6.EHealth = e2Round6.EHealth - attack + e2Round6.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round6.EHealth = e3Round6.EHealth - attack;
+                        if (e3Round6.EDefense <= attack)
+                        {
+                            e3Round6.EHealth = e3Round6.EHealth - attack + e3Round6.EDefense;
+                        }
                     }
                     if (e1Round6.EHealth <= 0)
                     {
@@ -5619,15 +6073,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round7.EHealth = e1Round7.EHealth - attack;
+                        if (e1Round7.EDefense <= attack)
+                        {
+                            e1Round7.EHealth = e1Round7.EHealth - attack + e1Round7.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round7.EHealth = e2Round7.EHealth - attack;
+                        if (e2Round7.EDefense <= attack)
+                        {
+                            e2Round7.EHealth = e2Round7.EHealth - attack + e2Round7.EDefense;
+                        }
                     }
                     else
                     {
-                        bossRound7.EHealth = bossRound7.EHealth - attack;
+                        if (bossRound7.EDefense <= attack)
+                        {
+                            bossRound7.EHealth = bossRound7.EHealth - attack + bossRound7.EDefense;
+                        }
                     }
                     if (e1Round7.EHealth <= 0)
                     {
@@ -5656,15 +6119,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round8.EHealth = e1Round8.EHealth - attack;
+                        if (e1Round8.EDefense <= attack)
+                        {
+                            e1Round8.EHealth = e1Round8.EHealth - attack + e1Round8.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round8.EHealth = e2Round8.EHealth - attack;
+                        if (e2Round8.EDefense <= attack)
+                        {
+                            e2Round8.EHealth = e2Round8.EHealth - attack + e2Round8.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round8.EHealth = e3Round8.EHealth - attack;
+                        if (e3Round8.EDefense <= attack)
+                        {
+                            e3Round8.EHealth = e3Round8.EHealth - attack + e3Round8.EDefense;
+                        }
                     }
                     if (e1Round8.EHealth <= 0)
                     {
@@ -5693,15 +6165,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round9.EHealth = e1Round9.EHealth - attack;
+                        if (e1Round9.EDefense <= attack)
+                        {
+                            e1Round9.EHealth = e1Round9.EHealth - attack + e1Round9.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round9.EHealth = e2Round9.EHealth - attack;
+                        if (e2Round9.EDefense <= attack)
+                        {
+                            e2Round9.EHealth = e2Round9.EHealth - attack + e2Round9.EDefense;
+                        }
                     }
                     else
                     {
-                        e3Round9.EHealth = e3Round9.EHealth - attack;
+                        if (e3Round9.EDefense <= attack)
+                        {
+                            e3Round9.EHealth = e3Round9.EHealth - attack + e3Round9.EDefense;
+                        }
                     }
                     if (e1Round9.EHealth <= 0)
                     {
@@ -5730,15 +6211,24 @@ namespace TheAnomalousYouthSquad_Game_try_1
                     int attack = cheer.Attack();
                     if (num >= 0 && num <= 40)
                     {
-                        e1Round10.EHealth = e1Round10.EHealth - attack;
+                        if (e1Round10.EDefense <= attack)
+                        {
+                            e1Round10.EHealth = e1Round10.EHealth - attack + e1Round10.EDefense;
+                        }
                     }
                     else if (num >= 41 && num < 60)
                     {
-                        e2Round10.EHealth = e2Round10.EHealth - attack;
+                        if (e2Round10.EDefense <= attack)
+                        {
+                            e2Round10.EHealth = e2Round10.EHealth - attack + e2Round10.EDefense;
+                        }
                     }
                     else
                     {
-                        bossFinal.EHealth = bossFinal.EHealth - attack;
+                        if (bossFinal.EDefense <= attack)
+                        {
+                            bossFinal.EHealth = bossFinal.EHealth - attack + bossFinal.EDefense;
+                        }
                     }
                     if (e1Round10.EHealth <= 0)
                     {
