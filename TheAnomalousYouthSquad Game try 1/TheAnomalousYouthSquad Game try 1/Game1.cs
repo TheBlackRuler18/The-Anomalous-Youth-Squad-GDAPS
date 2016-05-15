@@ -2429,47 +2429,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round1State == Round1States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round1State == Round1States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(690, 848), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(690, 948), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(1270, 848), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round1State == Round1States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2514,47 +2502,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round2State == Round2States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round2State == Round2States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round2State == Round2States.CheertTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2605,47 +2581,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round3State == Round3States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round3State == Round3States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round3State == Round3States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2689,47 +2653,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round4State == Round4States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round4State == Round4States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round4State == Round4States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2773,47 +2725,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round5State == Round5States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round5State == Round5States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round5State == Round5States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2863,47 +2803,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round6State == Round6States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round6State == Round6States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round6State == Round6States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -2953,47 +2881,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round7State == Round7States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round7State == Round7States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round7State == Round7States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -3043,47 +2959,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round8State == Round8States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round8State == Round8States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round8State == Round8States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -3133,47 +3037,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round9State == Round9States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round9State == Round9States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round9State == Round9States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
 
@@ -3223,47 +3115,35 @@ namespace TheAnomalousYouthSquad_Game_try_1
                 if (round10State == Round10States.NerdTurn)
                 {
                     spriteBatch.Draw(geekMenu, geekMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(444, 953), Color.Black);
-                    if (nerd.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + nerd.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + nerd.GAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.GMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + nerd.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round10State == Round10States.JockTurn)
                 {
                     spriteBatch.Draw(jockMenu, jockMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(444, 953), Color.Black);
-                    if (football.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + football.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + football.JAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.JMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + football.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
                 else if (round10State == Round10States.CheerTurn)
                 {
                     spriteBatch.Draw(cheerMenu, cheerMenuPosition, Color.White);
-                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(444, 867), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(444, 910), Color.Black);
-                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(444, 953), Color.Black);
-                    if (cheer.SpecialMeter < 100)
-                    {
-                        spriteBatch.DrawString(font, "Special Meter: " + cheer.SpecialMeter, new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
-                    else
-                    {
-                        spriteBatch.DrawString(font, "Special ready for use", new Vector2(GraphicsDevice.Viewport.Width / 2 - 100, GraphicsDevice.Viewport.Height / 2 - 100), Color.Black);
-                    }
+                    spriteBatch.DrawString(font, "" + cheer.CAttack, new Vector2(445, 867), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CDefense, new Vector2(445, 910), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CSpeed, new Vector2(445, 953), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CHealth, new Vector2(900, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.CMaxHealth, new Vector2(969, 819), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMeter, new Vector2(900, 873), Color.Black);
+                    spriteBatch.DrawString(font, "" + cheer.SpecialMax, new Vector2(969, 873), Color.Black);
                 }
             }
             //spriteBatch.DrawString(font, "Current X position for mouse: " + mState.X + " Y: " + mState.Y, new Vector2(20, 50), Color.Black);

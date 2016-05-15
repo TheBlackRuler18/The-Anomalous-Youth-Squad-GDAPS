@@ -14,23 +14,45 @@ namespace TheAnomalousYouthSquad_Game_try_1
         private int cDefense;
         private bool isAlive;
         private int specialMeter;
+        private int cMaxHealth;
+        private int specialMax;
+
         public int CHealth { get { return cHealth; } set { cHealth = value; } }
+        public int CMaxHealth { get { return cMaxHealth; } }
         public int CAttack { get { return cAttack; } }
         public int CDefense { get { return cDefense; } }
         public int CSpeed { get { return cSpeed; } }
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
-        public int SpecialMeter { get { return specialMeter; } set { specialMeter = value; } }
+        public int SpecialMeter
+        {
+            get { return specialMeter; }
+            set
+            {
+                if (value <= 100)
+                {
+                    specialMeter = value;
+                }
+                else
+                {
+                    specialMeter = 100;
+                }
+            }
+        }
+        public int SpecialMax { get { return specialMax; } }
+
 
         // constructor
         public Cheerleader(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
         {
             cHealth = h;
+            cMaxHealth = cHealth;
             cAttack = a;
             cSpeed = s;
             cDefense = d;
             isAlive = true;
             specialMeter = 0;
-            if (specialMeter > 100)
+            specialMax = 100;
+            if (specialMeter > specialMax)
             {
                 specialMeter = 100;
             }

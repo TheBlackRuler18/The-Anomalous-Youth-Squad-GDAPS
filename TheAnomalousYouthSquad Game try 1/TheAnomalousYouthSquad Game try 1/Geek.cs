@@ -8,28 +8,49 @@ namespace TheAnomalousYouthSquad_Game_try_1
     class Geek : Character
     {
         private int gHealth;
+        private int gMaxHealth;
         private int gSpeed;
         private int gDefense;
         private int gAttack;
         private bool isAlive;
         private int specialMeter;
+        private int specialMax;
+
         public int GHealth { get { return gHealth; } set { gHealth = value; } }
+        public int GMaxHealth { get { return gMaxHealth; } }
         public int GAttack { get { return gAttack; } set { gAttack = value; } }
         public int GDefense { get { return gDefense; } }
         public int GSpeed { get { return gSpeed; } }
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
-        public int SpecialMeter { get { return specialMeter; } set { specialMeter = value; } }
+        public int SpecialMeter
+        {
+            get { return specialMeter; }
+            set
+            {
+                if (value <= 100)
+                {
+                    specialMeter = value;
+                }
+                else
+                {
+                    specialMeter = 100;
+                }
+            }
+        }
+        public int SpecialMax { get { return specialMax; } }
 
         // Constructor
         public Geek(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
         {
             gHealth = h;
+            gMaxHealth = gHealth;
             gAttack = a;
             gSpeed = s;
             gDefense = d;
             isAlive = true;
             specialMeter = 0;
-            if (specialMeter > 100)
+            specialMax = 100;
+            if (specialMeter > specialMax)
             {
                 specialMeter = 100;
             }

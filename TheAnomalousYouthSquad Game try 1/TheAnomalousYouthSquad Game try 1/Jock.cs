@@ -8,29 +8,48 @@ namespace TheAnomalousYouthSquad_Game_try_1
     class Jock : Character
     {
         private int jHealth;
+        private int jMaxHealth;
         private int jAttack;
         private int jDefense;
         private int jSpeed;
         private bool isAlive;
         private int specialMeter;
-
+        private int specialMax;
 
         public int JHealth { get { return jHealth; } set { jHealth = value; } }
+        public int JMaxHealth { get { return jMaxHealth; } }
         public int JAttack { get { return jAttack; } }
         public int JDefense { get { return jDefense; } }
         public int JSpeed { get { return jSpeed; } }
         public bool IsAlive { get { return isAlive; } set { isAlive = value; } }
-        public int SpecialMeter { get { return specialMeter; } set { specialMeter = value; } }
+        public int SpecialMeter
+        {
+            get { return specialMeter; }
+            set
+            {
+                if (value <= 100)
+                {
+                    specialMeter = value;
+                }
+                else
+                {
+                    specialMeter = 100;
+                }
+            }
+        }
+        public int SpecialMax { get { return specialMax; } }
 
         public Jock(int h, int s, int a, int d, bool i) : base(h, s, a, d, i)
         {
             jHealth = h;
+            jMaxHealth = jHealth;
             jAttack = a;
             jSpeed = s;
             jDefense = d;
             isAlive = true;
             specialMeter = 0;
-            if (specialMeter > 100)
+            specialMax = 100;
+            if (specialMeter > specialMax)
             {
                 specialMeter = 100;
             }
